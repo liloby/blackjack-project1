@@ -4,6 +4,7 @@
 
 body {
     display: flex;
+    background-color: gray;
 }
 
 h1 {
@@ -46,22 +47,198 @@ cursor: pointer;
 }
 
 .outer-table {
-box-sizing: border-box;
 width: 1518px;
 height: 1088px;
-left: -38px;
-top: -34px;
-background: #CD6868;
+background: #a58787;
 background-blend-mode: multiply;
 border: 41px dashed #490E0E;
+border-radius: 50%;
 box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.24);
 }
 
 .inner-table {
 width: 1440px;
 height: 1024px;
-left: 1px;
-top: 0px;
 background: #2EA723;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 50%;
+}
+
+.dealer {
+
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 50px;
+color: #FFFFFF;
+text-align: center;
+
+}
+
+.computer-space {
+width: 891px;
+height: 179px;
+background: #1C7535;
+margin-left: 270px;
+margin-top: 80px;
+}
+
+.player-space {
+width: 891px;
+height: 179px;
+background: #1C7535;
+mix-blend-mode: normal;
+margin-left: 276px;
+margin-top: -20px;
+}
+
+.bet-section {
+width: 524px;
+height: 333px;
+background: #68882a;
+border: 6px solid #604D0C;
+border-radius: 50%;
+margin-left: 470px;
+margin-top: 20px;
+}
+
+div h4 {
+width: 233px;
+height: 65px;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 47px;
+line-height: 47px;
+color: #000000;
+margin-left: 160px;
+}
+
+div h3 {
+width: 211.36px;
+height: 134.33px;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 79px;
+line-height: 79px;
+color: #FFC700;
+margin-left: 190px;
+margin-top: -50px;
+}
+
+
+.balance-box {
+width: 152px;
+height: 45px;
+background: #000000;
+border: 3px solid #FFC700;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 27px;
+line-height: 27px;
+display: flex;
+align-items: center;
+color: #FFFFFF;
+margin-left: 275px;
+margin-top: -20px;
+}
+
+.bet-box {
+width: 152px;
+height: 45px;
+background: #000000;
+border: 3px solid #FFC700;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 27px;
+line-height: 27px;
+display: flex;
+align-items: center;
+color: #FFFFFF; 
+margin-left: 1015px;
+margin-top: -80px;
+}
+
+.btn-group1 {
+width: 124px;
+height: 66px;
+background: #4BB2D2;
+border: 2px solid #000000;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 31px;
+line-height: 31px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #FFFEFF;
+border-radius: 50%;
+padding: 10px;
+}
+
+.chips {
+width: 66.82px;
+height: 62.2px;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 31px;
+line-height: 31px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #FFC700;
+cursor: pointer;
+text-align: center;
+box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 50%;
+}
+
+.one-chip {
+background: #FFFFFF;
+border: 10px dashed #000000;
+}
+
+.five-chip {
+background: #FF0000;
+border: 10px dashed #FFFFFF;
+
+}
+
+.ten-chip {
+background: #82328F;
+border: 10px dashed #FFFFFF;
+}
+
+.play-btn {
+width: 112px;
+height: 105px;
+border-radius: 50%;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 38px;
+line-height: 38px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 10px;
+color: #000000;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border: 1px solid #000000;
+cursor: pointer;
+}
+
+.hit-btn {
+background: #49FF0A;
+}
+
+.stay-btn {
+background: #E90505;
 }
