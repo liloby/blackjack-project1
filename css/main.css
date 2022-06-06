@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+
+h1 {
+width: 544px;
+height: 89px;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 79px;
+line-height: 79px;
+color: #FFC700;
+
+}
+
+.audio {
+width: 185px;
+height: 70px;   
+background: #D9D9D9;
+border: 1px solid #000000;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 27px;
+line-height: 27px;
+color: #000000;
+cursor: pointer;
+}
+.reset {
+width: 185px;
+height: 70px;
+background: #D9D9D9;
+border: 1px solid #000000;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 30px;
+color: #000000;
+cursor: pointer;
+}
+
+.outer-table {
+box-sizing: border-box;
+width: 1518px;
+height: 1088px;
+left: -38px;
+top: -34px;
+background: #CD6868;
+background-blend-mode: multiply;
+border: 41px dashed #490E0E;
+box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.24);
+}
+
+.inner-table {
+width: 1440px;
+height: 1024px;
+left: 1px;
+top: 0px;
+background: #2EA723;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
