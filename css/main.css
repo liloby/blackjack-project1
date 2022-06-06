@@ -16,7 +16,8 @@ font-weight: 400;
 font-size: 79px;
 line-height: 79px;
 color: #FFC700;
-
+position: absolute;
+left: 980px;
 }
 
 .audio {
@@ -54,6 +55,7 @@ background-blend-mode: multiply;
 border: 41px dashed #490E0E;
 border-radius: 50%;
 box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.24);
+margin-top: 200px;
 }
 
 .inner-table {
@@ -65,7 +67,6 @@ border-radius: 50%;
 }
 
 .dealer {
-
 font-family: 'JejuHallasan';
 font-style: normal;
 font-weight: 400;
@@ -73,7 +74,6 @@ font-size: 50px;
 line-height: 50px;
 color: #FFFFFF;
 text-align: center;
-
 }
 
 .computer-space {
@@ -90,17 +90,18 @@ height: 179px;
 background: #1C7535;
 mix-blend-mode: normal;
 margin-left: 276px;
-margin-top: -20px;
+margin-top: -25.5px;
 }
 
 .bet-section {
 width: 524px;
 height: 333px;
-background: #68882a;
+background: rgba(114, 161, 82, 0.849);
 border: 6px solid #604D0C;
 border-radius: 50%;
 margin-left: 470px;
-margin-top: 20px;
+margin-top: 35px;
+margin-bottom: -30px;
 }
 
 div h4 {
@@ -143,7 +144,8 @@ display: flex;
 align-items: center;
 color: #FFFFFF;
 margin-left: 275px;
-margin-top: -20px;
+margin-top: 10px;
+margin-bottom: 50px;
 }
 
 .bet-box {
@@ -160,10 +162,10 @@ display: flex;
 align-items: center;
 color: #FFFFFF; 
 margin-left: 1015px;
-margin-top: -80px;
+margin-top: -95px;
 }
 
-.btn-group1 {
+.rebet-btn {
 width: 124px;
 height: 66px;
 background: #4BB2D2;
@@ -179,6 +181,29 @@ text-align: center;
 color: #FFFEFF;
 border-radius: 50%;
 padding: 10px;
+}
+
+.clear-btn {
+width: 124px;
+height: 66px;
+background: #4BB2D2;
+border: 2px solid #000000;
+font-family: 'JejuHallasan';
+font-style: normal;
+font-weight: 400;
+font-size: 31px;
+line-height: 31px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #FFFEFF;
+border-radius: 50%;
+padding: 10px;
+}
+
+.btn-group1 {
+    margin-left: 148px;
+    margin-top: -174px;
 }
 
 .chips {
@@ -197,22 +222,26 @@ cursor: pointer;
 text-align: center;
 box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 50%;
+margin-left: 1170px;
 }
 
 .one-chip {
 background: #FFFFFF;
 border: 10px dashed #000000;
+margin-top: px;
 }
 
 .five-chip {
 background: #FF0000;
 border: 10px dashed #FFFFFF;
+margin-top: px;
 
 }
 
 .ten-chip {
 background: #82328F;
 border: 10px dashed #FFFFFF;
+margin-top: -150px;
 }
 
 .play-btn {
@@ -237,8 +266,12 @@ cursor: pointer;
 
 .hit-btn {
 background: #49FF0A;
+margin-left: 590px;
+margin-top: 20px;
 }
 
 .stay-btn {
 background: #E90505;
+margin-left: 750px;
+margin-top: -105px;
 }
