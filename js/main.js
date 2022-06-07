@@ -21,7 +21,7 @@ function addBet(evt) {
         currentBet += 10
      }
         console.log(currentBet)
-        betEl.innerHTML = `BET: $ ${currentBet}`
+        betEl.innerHTML = `BETS: $ ${currentBet}`
     }
     // add else statement with a max-cap sound
 }
@@ -30,7 +30,7 @@ clearEl.addEventListener('click', removeBet)
 
 function removeBet() {
     currentBet = 0
-    betEl.innerHTML = `BET: $ ${currentBet}`
+    betEl.innerHTML = `BETS: $ ${currentBet}`
 }
 
 
@@ -47,19 +47,54 @@ function hitMe() {
    balEl.innerHTML = `BAL: $ ${currentBal}`
    totalBetsEl.innerHTML = `$ ${currentBet}`
    currentBet = 0
-   betEl.innerHTML = `BET: $ ${currentBet}`
+   betEl.innerHTML = `BETS: $ ${currentBet}`
     }
+    render()
 }
 
 const resetEl = document.getElementById('reset-game')
 
-resetEl.addEventListener('click', resetGame)
+resetEl.addEventListener('click', initGame)
 
-function resetGame() {
+function initGame() {
     currentBal = 200
     currentBet = 0
-    betEl.innerHTML = `BET: $ ${currentBet}`
+    betEl.innerHTML = `BETS: $ ${currentBet}`
     balEl.innerHTML = `BAL: $ ${currentBal}`
     totalBetsEl.innerHTML = ``
+    createDeck()
+    shuffleDeck()
 }
 
+let deck;
+
+function createDeck() {
+    const cardValues = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', "J", 'Q', 'K']
+    const cardSuits = ['D', 'C', 'H', 'S']
+    deck = []
+
+    for (let i = 0; i < cardValues.length; i++) {
+        for (let j = 0; j < cardSuits.length; j++) {
+            deck.push(`${cardValues[i]} - ${cardSuits[j]}`)
+        }
+    }
+}
+
+function shuffleDeck() {
+    for (let i = 0; i < deck.length; i++) {
+        let randomizeDeck = Math.floor(Math.random() * deck.length)
+        let randomCard = deck[i]
+        deck[i] = deck[randomizeDeck]
+        deck[randomizeDeck] = randomCard
+    }
+    console.log(deck)
+}
+
+function render(){
+    console.log(`starting game`)
+}
+
+
+
+
+initGame()
