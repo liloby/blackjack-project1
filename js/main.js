@@ -90,9 +90,13 @@ function shuffleDeck() {
     console.log(deck)
 }
 
+const playerDeck = document.getElementById('player-deck')
+
 function render(){
     let card = deck[deck.length - 1]
-    deck.pop()
+    let savedCard = deck.pop()
+    playerDeck.appendChild = `${savedCard}`
+
     console.log(card)
 
     
