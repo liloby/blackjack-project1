@@ -11,7 +11,7 @@
   <body>
     <h1>Blackjack</h1>
     <button class="audio">Audio on/off</button>
-    <button class="reset">Reset Game</button>
+    <button id="reset-game" class="reset">Reset Game</button>
     <div class="outer-table">
       <div class="inner-table">
         <div class="items">
@@ -24,23 +24,23 @@
             <h3>$</h3>
           </div>
           <div class="money-box">
-            <p class="balance-box">Bal: $</p>
-            <p class="bet-box">Bet: $</p>
+            <p class="balance-box" id="balance-box">Bal: $200</p>
+            <p class="bet-box" id="bet-box">Bet: $ 0</p>
           </div>
           <div class="player-space">
             <div class="player-deck"></div>
           </div>
           <div class="btn-group1">
             <button class="rebet-btn">REBET</button>
-            <button class="clear-btn">CLEAR</button>
+            <button id="clear-btn" class="clear-btn">CLEAR</button>
           </div>
-          <div class="money-chips">
+          <div class="money-chips" id="money-chips">
               <div class="chips ten-chip">$10</div>
               <div class="chips five-chip">$5</div>
               <div class="chips one-chip">$1</div>
           </div>
-          <div class="play-btn hit-btn">HIT</div>
-          <div class="play-btn stay-btn">STAY</div>
+          <div id="hit-btn" class="play-btn hit-btn">HIT</div>
+          <div id="stay-btn" class="play-btn stay-btn">STAY</div>
         </div>
       </div>
     </div>
