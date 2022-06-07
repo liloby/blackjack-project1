@@ -92,6 +92,7 @@ function shuffleDeck() {
 
 function render(){
     console.log(`starting game`)
+    
 }
 
 
