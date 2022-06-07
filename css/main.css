@@ -49,7 +49,7 @@ cursor: pointer;
 
 .outer-table {
 width: 1518px;
-height: 1088px;
+height: 1100px;
 background: #a58787;
 background-blend-mode: multiply;
 border: 41px dashed #490E0E;
@@ -74,6 +74,8 @@ font-size: 50px;
 line-height: 50px;
 color: #FFFFFF;
 text-align: center;
+padding-top: 50px;
+margin-bottom: -45px;
 }
 
 .computer-space {
@@ -82,6 +84,7 @@ height: 179px;
 background: #1C7535;
 margin-left: 270px;
 margin-top: 80px;
+box-shadow: -3px -5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .player-space {
@@ -91,6 +94,7 @@ background: #1C7535;
 mix-blend-mode: normal;
 margin-left: 276px;
 margin-top: -25.5px;
+box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .bet-section {
@@ -105,7 +109,7 @@ margin-bottom: -30px;
 }
 
 div h4 {
-width: 233px;
+width: 250px;
 height: 65px;
 font-family: 'JejuHallasan';
 font-style: normal;
@@ -113,7 +117,7 @@ font-weight: 400;
 font-size: 47px;
 line-height: 47px;
 color: #000000;
-margin-left: 160px;
+margin-left: 130px;
 }
 
 div h3 {
@@ -125,7 +129,7 @@ font-weight: 400;
 font-size: 79px;
 line-height: 79px;
 color: #FFC700;
-margin-left: 190px;
+margin-left: 188px;
 margin-top: -50px;
 }
 
@@ -142,6 +146,7 @@ font-size: 27px;
 line-height: 27px;
 display: flex;
 align-items: center;
+justify-content: center;
 color: #FFFFFF;
 margin-left: 275px;
 margin-top: 10px;
@@ -160,6 +165,7 @@ font-size: 27px;
 line-height: 27px;
 display: flex;
 align-items: center;
+justify-content: center;
 color: #FFFFFF; 
 margin-left: 1015px;
 margin-top: -95px;
@@ -230,14 +236,14 @@ margin-left: 1170px;
 .one-chip {
 background: #FFFFFF;
 border: 10px dashed #000000;
-margin-top: px;
+padding-left: 5px;
+
 }
 
 .five-chip {
 background: #FF0000;
 border: 10px dashed #FFFFFF;
-margin-top: px;
-
+padding-left: 7px;
 }
 
 .ten-chip {
@@ -274,6 +280,6 @@ margin-top: 20px;
 
 .stay-btn {
 background: #E90505;
-margin-left: 750px;
-margin-top: -105px;
+margin-left: 770px;
+margin-top: -106px;
 }

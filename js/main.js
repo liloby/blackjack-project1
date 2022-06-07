@@ -10,24 +10,26 @@ let currentBal = 200;
 let currentBet = 0;
 
 function addBet(evt) {
-    if (evt.target.innerHTML === '$1') {
+    if (currentBal > currentBet) {
+        if (evt.target.innerHTML === '$1') {
         currentBet += 1
-    }
-    if (evt.target.innerHTML === '$5') {
+     }
+        if (evt.target.innerHTML === '$5') {
         currentBet += 5
-    }
-    if (evt.target.innerHTML === '$10') {
+        }
+        if (evt.target.innerHTML === '$10') {
         currentBet += 10
+     }
+        console.log(currentBet)
+        betEl.innerHTML = `BET: $ ${currentBet}`
     }
-    console.log(currentBet)
-    betEl.innerHTML = `Bet: $ ${currentBet}`
 }
 
 clearEl.addEventListener('click', removeBet)
 
 function removeBet() {
     currentBet = 0
-    betEl.innerHTML = `Bet: $ ${currentBet}`
+    betEl.innerHTML = `BET: $ ${currentBet}`
 }
 
 
@@ -41,10 +43,10 @@ hitEl.addEventListener('click', hitMe)
 function hitMe() {
     if (currentBet > 0) {
    currentBal = currentBal - currentBet
-   balEl.innerHTML = `Bal: $ ${currentBal}`
+   balEl.innerHTML = `BAL: $ ${currentBal}`
    totalBetsEl.innerHTML = `$ ${currentBet}`
    currentBet = 0
-   betEl.innerHTML = `Bet: $ ${currentBet}`
+   betEl.innerHTML = `BET: $ ${currentBet}`
     }
 }
 
@@ -55,8 +57,8 @@ resetEl.addEventListener('click', resetGame)
 function resetGame() {
     currentBal = 200
     currentBet = 0
-    betEl.innerHTML = `Bet: $ ${currentBet}`
-    balEl.innerHTML = `Bal: $ ${currentBal}`
-    totalBetsEl.innerHTML = `$ ${currentBet}`
+    betEl.innerHTML = `BET: $ ${currentBet}`
+    balEl.innerHTML = `BAL: $ ${currentBal}`
+    totalBetsEl.innerHTML = ``
 }
 
