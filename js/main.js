@@ -23,6 +23,7 @@ function addBet(evt) {
         console.log(currentBet)
         betEl.innerHTML = `BET: $ ${currentBet}`
     }
+    // add else statement with a max-cap sound
 }
 
 clearEl.addEventListener('click', removeBet)
