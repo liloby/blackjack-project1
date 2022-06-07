@@ -91,9 +91,15 @@ function shuffleDeck() {
 }
 
 function render(){
-    console.log(`starting game`)
+    let card = deck[deck.length - 1]
+    deck.pop()
+    console.log(card)
+
     
 }
+
+let player;
+let computer;
 
 
 
