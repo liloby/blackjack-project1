@@ -33,7 +33,9 @@ function removeBet() {
     betEl.innerHTML = `BETS: $ ${currentBet}`
 }
 
-
+function placeBet() {
+    
+}
 
 const hitEl = document.getElementById('hit-btn')
 const stayEl = document.getElementById('stay-btn')
@@ -112,11 +114,13 @@ let round = 0;
 function dealComputer() {
     if (round < 1) {
     card = deck.pop()
+    computerAceCheck()
     computerSum += card.value
     hiddenCardEl.classList = (`card back-red large ${card.face}`)
     round += 1
     }
     card = deck.pop()
+    computerAceCheck()
     console.log("hidden: " + card.value)
     // console.log("shown: " + card.value)
     const newCardEl = document.createElement('div')
@@ -127,16 +131,19 @@ function dealComputer() {
 }
 
 let playerCardsArr = []
+let playerRound = 0;
 
 // deal player's card twice, store card value in an array(for aceReduction), add value to playerSum and render
 function dealPlayer() {
     let dealTwice = 2;
     while (dealTwice > 0) {
     card = deck.pop()
-    aceCheck()
+    playerAceCheck()
     sumValue()
+    aceReduce()
     hitPlayer()
     dealTwice -= 1
+    playerRound += 1
     }
 }
 
@@ -144,9 +151,11 @@ function dealPlayer() {
 function render(){
     
     // For Player
-    if (playerSum < 21){
+    // this if statement makes it so ace will reduce if two aces are dealt on first two rounds
+    if (playerSum < 21) {
     card = deck.pop()
-    aceCheck()
+    playerRound += 1
+    playerAceCheck()
     aceReduce()
     // console.log("Card: " + card.face)
     playerSum += card.value
@@ -175,49 +184,61 @@ const message = document.querySelector('h2')
 function playerResults() {
     if (playerSum > 21) {
         console.log("busted")
-        message.innerHTML = "BUSTED"
+        message.innerHTML = "You Lose!"
+    } if (playerRound > 4 && playerSum < 21) {
+        message.innerHTML = "You Win"
     }
 }
 
 function compareResults() {
     hiddenCardEl.classList.remove('back-red')
-    while (computerSum <= playerSum && computerSum < 17 && playerSum < 22) {
+    while (computerSum <= playerSum && computerSum < 17 && playerSum < 22 || computerSum < 21 && computerSum < playerSum && computerAceCount > 0) {
         card = deck.pop()
+        computerAceCheck()
         const newCardEl = document.createElement('div')
         newCardEl.classList = `card ${card.face} large`
         computerDeck.appendChild(newCardEl)
         computerSum += card.value
+        computerAceCheck()
     }
         
-        if (playerSum > computerSum && playerSum < 22 || computerSum < playerSum) {
-            message.innerHTML ="Player Wins"
+        if (playerSum > computerSum && playerSum < 22 || computerSum < playerSum && playerSum < 22 || playerSum === 21 && playerRound === 2 || playerSum < 22 && playerRound > 4) {
+            message.innerHTML ="You Win"
         } else if (computerSum === playerSum) {
             message.innerHTML = "Tie"
         } else if (computerSum > 21) {
-            message.innerHTML = "Dealer Busted"
+            message.innerHTML = "You Win"
         } 
         else {
             message.innerHTML = "You Lose"
         }
-        return
     } 
 
 let playerAceCount = 0;
 let computerAceCount = 0;
-function aceCheck() {
-    if (card.value == '11') {
+function playerAceCheck() {
+    if (card.value == '11' && playerSum !== 21) {
         playerAceCount += 1
         console.log("before reduction: " + playerAceCount)
     }
 }
 
+function computerAceCheck() {
+    if (card.value == '11' && computerSum !== 21) {
+        computerAceCount += 1
+    } if (computerAceCount > 0) {
+        aceReduce()
+    }
+}
+// do one for computerAceCount
+
 function aceReduce() {
-    while (playerAceCount > 0) {
+    while (playerAceCount > 0 && playerSum !== 21) {
         playerSum -= 10
         playerAceCount -= 1
         console.log("after reduction: " + playerAceCount)
     }
-    while (computerAceCount > 0) {
+    while (computerAceCount > 0 && computerSum !== 21 && computerSum < playerSum) {
         computerSum -= 10
         computerAceCount -= 1
         console.log("computer after reduction: " + computerAceCount)
