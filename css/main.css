@@ -18,7 +18,7 @@ font-size: 79px;
 line-height: 79px;
 color: #FFC700;
 position: absolute;
-left: 970px;
+margin-left: 970px;
 }
 
 .audio {
@@ -299,6 +299,7 @@ cursor: pointer;
 .play-btn:hover {
     transform: scale(1.2);
     color: white;
+    user-select: none;
 }
 
 .hit-btn {
@@ -311,4 +312,29 @@ margin-top: 20px;
 background: #E90505;
 margin-left: 770px;
 margin-top: -106px;
+}
+
+.card-counter {
+    position: absolute;
+    margin-left: 442px;
+    margin-top: 185px;
+    color:white;
+    font-size: 25px;
+    padding: 5px;
+}
+
+h2 {
+    position: absolute;
+    margin-top: -160px;
+    margin-left: 50px;
+    font-size: 50px;
+    color: rgb(169, 49, 49);
+}
+
+.hidden {
+    opacity: 0%;
+}
+
+.card {
+    cursor: default;
 }

@@ -40,6 +40,7 @@ const stayEl = document.getElementById('stay-btn')
 
 
 hitEl.addEventListener('click', hitMe)
+stayEl.addEventListener('click', compareResults)
 
 function hitMe() {
     if (currentBet > 0) {
@@ -65,9 +66,12 @@ function initGame() {
     createDeck()
     shuffleDeck()
     dealComputer()
+    dealPlayer()
 }
 
+
 let deck;
+
 
 function createDeck() {
     const suits = ['d', 'c', 'h', 's']
@@ -99,40 +103,107 @@ function shuffleDeck() {
 }
 
 const playerDeck = document.getElementById('player-deck')
+const computerDeck = document.getElementById('computer-deck')
+const hiddenCardEl = document.getElementById('hidden-card')
 let computerSum = 0;
 let playerSum = 0;
 
 function dealComputer() {
     hidden = deck.pop()
+    hiddenCardEl.classList = (`card back-red large ${hidden.face}`)
     card = deck.pop()
     console.log("hidden: " + hidden.value)
-    console.log("shown: " + card.value)
+    // console.log("shown: " + card.value)
+    const newCardEl = document.createElement('div')
+    newCardEl.classList = `card ${card.face} large`
+    computerDeck.appendChild(newCardEl)
     computerSum += hidden.value + card.value
     console.log(computerSum)
 }
 
-
-const testCardEl = document.getElementById('testCard')
+function dealPlayer() {
+    card = deck.pop()
+    sumValue()
+    hitPlayer()
+    card = deck.pop()
+    sumValue()
+    hitPlayer()
+}
 
 function render(){
     // For Player
-    if (playerSum < 22){
+    if (playerSum < 21){
     card = deck.pop()
-    console.log("Card: " + card.face)
+    aceCheck()
+    // console.log("Card: " + card.face)
     playerSum += card.value
-    console.log(playerSum)
-    testCardEl.classList = `card ${card.face} large`
+    // console.log(playerSum)
+    hitPlayer()
+    }
+    if(playerSum > 21) {
+        document.getElementById('card-counter').style.color = 'red' 
+    }
+
+}
+
+function sumValue() {
+    playerSum += card.value
+}
+
+function hitPlayer() {
+    const newCardEl = document.createElement('div')
+    newCardEl.classList = `card ${card.face} large`
+    playerDeck.appendChild(newCardEl)
+    document.getElementById('card-counter').innerHTML = playerSum
+    playerResults()
+}
+
+const message = document.querySelector('h2')
+
+function playerResults() {
+    if (playerSum > 21) {
+        console.log("busted")
+        message.innerHTML = "BUSTED"
     }
 }
 
+function compareResults() {
+    hiddenCardEl.classList.remove('back-red')
+    while (computerSum <= playerSum && computerSum < 21 && playerSum < 22) {
+        card = deck.pop()
+        aceCheck()
+        const newCardEl = document.createElement('div')
+        newCardEl.classList = `card ${card.face} large`
+        computerDeck.appendChild(newCardEl)
+        computerSum += card.value
+    }
+    
+        if (playerSum > computerSum && playerSum < 22 || computerSum < playerSum) {
+            message.innerHTML ="Player Wins"
+        } else if (computerSum === playerSum) {
+            message.innerHTML = "Tie"
+        } else if (computerSum > 21) {
+            message.innerHTML = "Dealer BUSTED"
+        } 
+        else {
+            message.innerHTML = "You Lose"
+        }
+        return
+    } 
+let computerAceCount = 0;
+let playerAceCount = 0;
 
-
-
-
-let playerResult;
-let dealerResult;
-
-
+function aceCheck () {
+    if (playerSum > 22 && aceCount > 0) {
+        playerSum -= 10
+        playerAceCount -= 1
+    }
+    if (computerSum > 22 && aceCount > 0) {
+        computerSum -= 10
+        computerAceCount -= 1
+    }
+    return
+}
 
 
 initGame()
