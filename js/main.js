@@ -64,46 +64,75 @@ function initGame() {
     totalBetsEl.innerHTML = ``
     createDeck()
     shuffleDeck()
+    dealComputer()
 }
 
 let deck;
 
 function createDeck() {
-    const cardValues = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', "J", 'Q', 'K']
-    const cardSuits = ['D', 'C', 'H', 'S']
+    const cardSuits = ['d', 'c', 'h', 's']
+    const cardValues = ['02', '03', '04', '05', '06', '07', '08', '09', '10', "J", 'Q', 'K', 'A']
     deck = []
 
-    for (let i = 0; i < cardValues.length; i++) {
-        for (let j = 0; j < cardSuits.length; j++) {
-            deck.push(`${cardValues[i]} - ${cardSuits[j]}`)
+    for (let i = 0; i < cardSuits.length; i++) {
+        for (let j = 0; j < cardValues.length; j++) {
+            deck.push(`${cardSuits[i]}${cardValues[j]}`)
         }
     }
 }
 
 function shuffleDeck() {
     for (let i = 0; i < deck.length; i++) {
-        let randomizeDeck = Math.floor(Math.random() * deck.length)
+        let randomizeNum = Math.floor(Math.random() * deck.length)
         let randomCard = deck[i]
-        deck[i] = deck[randomizeDeck]
-        deck[randomizeDeck] = randomCard
+        deck[i] = deck[randomizeNum]
+        deck[randomizeNum] = randomCard
     }
     console.log(deck)
 }
 
 const playerDeck = document.getElementById('player-deck')
+let computerSum = 0;
+let playerSum = 0;
 
-function render(){
-    let card = deck[deck.length - 1]
-    let savedCard = deck.pop()
-    playerDeck.appendChild = `${savedCard}`
-
-    console.log(card)
-
-    
+function dealComputer() {
+    hidden = deck.pop()
+    card = deck.pop()
+    console.log("hidden: " + hidden)
+    console.log("shown: " + card)
+    computerSum += getValue(hidden) + getValue(card)
+    console.log(computerSum)
 }
 
-let player;
-let computer;
+
+
+
+function render(){
+    // For Player
+    if (playerSum < 22){
+    card = deck.pop()
+    playerSum += getValue(card)
+    console.log(playerSum)
+    }
+}
+
+function getValue(card) {
+    let data = card.split('')
+    console.log(data)
+    let value = data[2]
+    if (isNaN(value)) {
+        if (value == 'A') {
+            return 11
+        }
+        return 10
+    }
+    return parseInt(value)
+}
+
+
+
+let playerResult;
+let dealerResult;
 
 
 
