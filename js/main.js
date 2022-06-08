@@ -108,33 +108,46 @@ const hiddenCardEl = document.getElementById('hidden-card')
 let computerSum = 0;
 let playerSum = 0;
 
+let round = 0;
 function dealComputer() {
-    hidden = deck.pop()
-    hiddenCardEl.classList = (`card back-red large ${hidden.face}`)
+    if (round < 1) {
     card = deck.pop()
-    console.log("hidden: " + hidden.value)
+    computerSum += card.value
+    hiddenCardEl.classList = (`card back-red large ${card.face}`)
+    round += 1
+    }
+    card = deck.pop()
+    console.log("hidden: " + card.value)
     // console.log("shown: " + card.value)
     const newCardEl = document.createElement('div')
     newCardEl.classList = `card ${card.face} large`
     computerDeck.appendChild(newCardEl)
-    computerSum += hidden.value + card.value
+    computerSum += card.value
     console.log(computerSum)
 }
 
+let playerCardsArr = []
+
+// deal player's card twice, store card value in an array(for aceReduction), add value to playerSum and render
 function dealPlayer() {
+    let dealTwice = 2;
+    while (dealTwice > 0) {
     card = deck.pop()
+    aceCheck()
     sumValue()
     hitPlayer()
-    card = deck.pop()
-    sumValue()
-    hitPlayer()
+    dealTwice -= 1
+    }
 }
 
+
 function render(){
+    
     // For Player
     if (playerSum < 21){
     card = deck.pop()
     aceCheck()
+    aceReduce()
     // console.log("Card: " + card.face)
     playerSum += card.value
     // console.log(playerSum)
@@ -143,7 +156,6 @@ function render(){
     if(playerSum > 21) {
         document.getElementById('card-counter').style.color = 'red' 
     }
-
 }
 
 function sumValue() {
@@ -169,41 +181,47 @@ function playerResults() {
 
 function compareResults() {
     hiddenCardEl.classList.remove('back-red')
-    while (computerSum <= playerSum && computerSum < 21 && playerSum < 22) {
+    while (computerSum <= playerSum && computerSum < 17 && playerSum < 22) {
         card = deck.pop()
-        aceCheck()
         const newCardEl = document.createElement('div')
         newCardEl.classList = `card ${card.face} large`
         computerDeck.appendChild(newCardEl)
         computerSum += card.value
     }
-    
+        
         if (playerSum > computerSum && playerSum < 22 || computerSum < playerSum) {
             message.innerHTML ="Player Wins"
         } else if (computerSum === playerSum) {
             message.innerHTML = "Tie"
         } else if (computerSum > 21) {
-            message.innerHTML = "Dealer BUSTED"
+            message.innerHTML = "Dealer Busted"
         } 
         else {
             message.innerHTML = "You Lose"
         }
         return
     } 
-let computerAceCount = 0;
-let playerAceCount = 0;
 
-function aceCheck () {
-    if (playerSum > 22 && aceCount > 0) {
-        playerSum -= 10
-        playerAceCount -= 1
+let playerAceCount = 0;
+let computerAceCount = 0;
+function aceCheck() {
+    if (card.value == '11') {
+        playerAceCount += 1
+        console.log("before reduction: " + playerAceCount)
     }
-    if (computerSum > 22 && aceCount > 0) {
-        computerSum -= 10
-        computerAceCount -= 1
-    }
-    return
 }
 
+function aceReduce() {
+    while (playerAceCount > 0) {
+        playerSum -= 10
+        playerAceCount -= 1
+        console.log("after reduction: " + playerAceCount)
+    }
+    while (computerAceCount > 0) {
+        computerSum -= 10
+        computerAceCount -= 1
+        console.log("computer after reduction: " + computerAceCount)
+    }
+}
 
 initGame()

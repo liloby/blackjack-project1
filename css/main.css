@@ -110,7 +110,7 @@ height: 179px;
 background: #1C7535;
 mix-blend-mode: normal;
 margin-left: 276px;
-margin-top: -25.5px;
+margin-top: 58px;
 border: 2px solid black;
 box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
 }
@@ -158,13 +158,13 @@ font-style: normal;
 font-weight: 400;
 font-size: 24px;
 line-height: 27px;
-display: flex;
-align-items: center;
-justify-content: center;
+position: absolute;
 color: #FFFFFF;
 margin-left: 276px;
-margin-top: 10px;
+margin-top: 11.5px;
 margin-bottom: 50px;
+text-align: center;
+padding-top: 5px;;
 }
 
 .bet-box {
@@ -176,12 +176,12 @@ font-style: normal;
 font-weight: 400;
 font-size: 24px;
 line-height: 27px;
-display: flex;
-align-items: center;
-justify-content: center;
+position: absolute;
 color: #FFFFFF; 
 margin-left: 995px;
-margin-top: -95px;
+margin-top: 11.5px;
+text-align: center;
+padding-top: 5px;;
 }
 
 .rebet-btn {
