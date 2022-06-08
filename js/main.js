@@ -70,15 +70,22 @@ function initGame() {
 let deck;
 
 function createDeck() {
-    const cardSuits = ['d', 'c', 'h', 's']
-    const cardValues = ['02', '03', '04', '05', '06', '07', '08', '09', '10', "J", 'Q', 'K', 'A']
+    const suits = ['d', 'c', 'h', 's']
+    const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', "J", 'Q', 'K', 'A']
     deck = []
 
-    for (let i = 0; i < cardSuits.length; i++) {
-        for (let j = 0; j < cardValues.length; j++) {
-            deck.push(`${cardSuits[i]}${cardValues[j]}`)
-        }
-    }
+    suits.forEach(function(suit) {
+        ranks.forEach(function(rank) {
+            deck.push({
+                
+                face: `${suit}${rank}`,
+
+                value: Number(rank) || (rank === 'A' ? 11 : 10)
+
+            })
+        })
+    })
+    return deck
 }
 
 function shuffleDeck() {
@@ -98,36 +105,27 @@ let playerSum = 0;
 function dealComputer() {
     hidden = deck.pop()
     card = deck.pop()
-    console.log("hidden: " + hidden)
-    console.log("shown: " + card)
-    computerSum += getValue(hidden) + getValue(card)
+    console.log("hidden: " + hidden.value)
+    console.log("shown: " + card.value)
+    computerSum += hidden.value + card.value
     console.log(computerSum)
 }
 
 
-
+const testCardEl = document.getElementById('testCard')
 
 function render(){
     // For Player
     if (playerSum < 22){
     card = deck.pop()
-    playerSum += getValue(card)
+    console.log("Card: " + card.face)
+    playerSum += card.value
     console.log(playerSum)
+    testCardEl.classList = `card ${card.face} large`
     }
 }
 
-function getValue(card) {
-    let data = card.split('')
-    console.log(data)
-    let value = data[2]
-    if (isNaN(value)) {
-        if (value == 'A') {
-            return 11
-        }
-        return 10
-    }
-    return parseInt(value)
-}
+
 
 
 
