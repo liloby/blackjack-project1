@@ -296,6 +296,7 @@ resetEl.addEventListener('click', resetGame)
 stayEl.addEventListener('click', wrapUp)
 /*----- functions -----*/
 function resetGame() {
+    message.innerHTML = ""
     startEl.addEventListener('click', startGame)
     startEl.classList.remove('hide-start')
     dealerSum = 0;
@@ -424,7 +425,7 @@ function hitMe() {
 function checkBusted() {
     if (playerSum > 21) {
         counterEl.style.color = 'red' 
-        compareResults()
+        render()
     }
 }
 
@@ -436,13 +437,14 @@ function wrapUp() {
     }
 
     canHit = false
-    compareResults()
+    render()
 }
-
-function compareResults() {
+// This function compare results and display it
+function render() {
     dealerCounterEl.innerHTML = dealerSum
     hiddenCardEl.classList.remove('back-red')
     if (playerSum > 21) {
+        message.innerHTML = "Busted <br> You Lose"
         console.log("BUSTED You Lose!")
     }
     else if (dealerSum > 21) {
@@ -485,3 +487,19 @@ function dealerAceDeduct() {
     }
     return dealerSum
 }
+
+const musicEl = document.getElementById('audio')
+musicEl.addEventListener('click', playMusic)
+
+let musicCount = 0;
+let music = new Audio('Jazz-Music.mp3')
+function playMusic() {
+    if (musicCount < 1) {
+        musicCount += 1
+        music.play()
+    } else if (musicCount == 1) {
+        music.pause()
+        musicCount -= 1
+    }
+} 
+playMusic()
