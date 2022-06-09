@@ -373,10 +373,11 @@ h2 {
 
 .start-btn {
     background: yellow;
-    margin-left: 645px;
-    margin-top: -265px;
-    width: 182px;
-    height: 115px;
+    margin-left: 590px;
+    margin-top: -315px;
+    width: 282px;
+    height: 215px;
+    line-height: 50px;
 }
 
 .again-btn {

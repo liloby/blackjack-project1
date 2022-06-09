@@ -36,7 +36,6 @@ const againEl = document.getElementById('play-again')
 const allInEl = document.getElementById('all-in')
 
 /*----- event listeners -----*/
-//hitMe must go first
 hitEl.addEventListener('click', hitMe)
 startEl.addEventListener('click', startGame)
 resetEl.addEventListener('click', resetGame)
@@ -47,7 +46,7 @@ chipsEl.addEventListener('click', addBet)
 clearEl.addEventListener('click', removeBet)
 allInEl.addEventListener('click', allIn)
 /*----- functions -----*/
-
+// This function allow players to use the Betting system
 function addBet(evt) {
     if (currentBal > currentBet) {
         if (evt.target.innerHTML === '$1') {
@@ -67,17 +66,20 @@ function addBet(evt) {
     // add else statement with a max-cap sound
 }
 
+// This is part of the bet system that allow players to bet all of currentBal
 function allIn() {
     currentBet = currentBal
     betEl.innerHTML = `BETS: $ ${currentBet}`
 
 }
 
+// Clear currentBet amount
 function removeBet() {
     currentBet = 0
     betEl.innerHTML = `BETS: $ ${currentBet}`
 }
 
+// Store and clear currentBet
 function storeBet() {
     totalBets += currentBet
     currentBal -= currentBet
@@ -88,18 +90,23 @@ function storeBet() {
 
 }
 
+// This saves current balance but reset everything else.
 function playAgain() {
     nextRound()
     againEl.classList.add('hide')
     againEl.removeEventListener('click', playAgain)
 }
 
+// when the window loads, the play again button is hidden and not clickable
 window.onload = function() {
+    hitEl.removeEventListener('click', hitMe)
+    stayEl.removeEventListener('click', wrapUp)
     againEl.classList.add('hide')
     againEl.removeEventListener('click', playAgain)
     currentBal = 200;
 }
 
+// This saves current balance, and delete everything else
 function nextRound() {
     message.innerHTML = ""
     startEl.addEventListener('click', startGame)
@@ -125,6 +132,7 @@ function nextRound() {
     }
 }
 
+// This resets the game when the reset button is pressed
 function resetGame() {
     againEl.classList.add('hide')
     againEl.removeEventListener('click', playAgain)
@@ -156,16 +164,22 @@ function resetGame() {
     }
 }
 
+// This starts the game when the start button is pressed
 function startGame() {
-    storeBet()
-    startEl.removeEventListener('click', startGame)
-    startEl.classList.add('hide')
-    createDeck()
-    shuffleDeck()
-    startDealComputer()
-    startDealPlayer()
+    if (currentBet > 0){
+        hitEl.addEventListener('click', hitMe)
+        stayEl.addEventListener('click', wrapUp)
+        storeBet()
+        startEl.removeEventListener('click', startGame)
+        startEl.classList.add('hide')
+        createDeck()
+        shuffleDeck()
+        startDealComputer()
+        startDealPlayer()
+    } 
 }
 
+// This function creates the deck with 52 cards
 function createDeck() {
     const suits = ['d', 'c', 'h', 's']
     const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', "J", 'Q', 'K', 'A']
@@ -185,6 +199,7 @@ function createDeck() {
     return deck
 }
 
+// This function shuffles the deck that we created
 function shuffleDeck() {
     for (let i = 0; i < deck.length; i++) {
         let randomizeNum = Math.floor(Math.random() * deck.length)
@@ -194,6 +209,7 @@ function shuffleDeck() {
     }
 }
 
+// This starts off the game by dealing two cards to the dealer
 function startDealComputer() {
     // this keeps track and deal the hidden card for dealer
     while (computerRound < 1) {
@@ -206,9 +222,10 @@ function startDealComputer() {
     }
     dealAnotherComputer()
 }
+
 // This deals another card for dealer that is not the first card
 function dealAnotherComputer() {
-    if (playerSum < 22) {
+    if (playerSum < 22 || dealerSum < 17) {
     card = deck.pop()
     dealerAceCount += checkAce(card)
     dealerAceDeduct()
@@ -217,12 +234,14 @@ function dealAnotherComputer() {
     computerRound++
     }
 }
+
 // this reveals dealer cards that is not the hidden card
 function showDealerCards() {
     const newCardEl = document.createElement('div')
     newCardEl.classList = `card ${card.face} large`
     computerDeck.appendChild(newCardEl)
 }
+
 // this deals player's first two cards
 function startDealPlayer() {
     for (let i = 0; i < 2; i++) {
@@ -233,6 +252,7 @@ function startDealPlayer() {
         showPlayerCards()
     }
 }
+
 // this shows the cards of the player on the DOM
 function showPlayerCards() {
     const newCardEl = document.createElement('div')
@@ -240,6 +260,7 @@ function showPlayerCards() {
     playerDeck.appendChild(newCardEl)
     counterEl.innerHTML = playerSum
 }
+
 //this deal another card for the player
 function hitMe() {
     if (canHit == false) {
@@ -267,7 +288,6 @@ function checkBusted() {
 
 // when clicked on STAY this function executes
 function wrapUp() {
-    // stayEl.removeEventListener('click', wrapUp)
     while (dealerSum < playerSum && dealerSum < 17 && playerSum < 22) {
     dealAnotherComputer()
     dealerAceDeduct()
@@ -309,6 +329,8 @@ function render() {
         currentBal += 0
         totalBets = 0
     }
+    hitEl.removeEventListener('click', hitMe)
+    stayEl.removeEventListener('click', wrapUp)
     againEl.classList.remove('hide')
     againEl.addEventListener('click', playAgain)
     balEl.innerHTML = `BAL: $ ${currentBal}`
@@ -323,6 +345,7 @@ function checkAce(card) {
     return 0
 }
 
+// This subtract playerSum value if player has any ace
 function playerAceDeduct() {
     if (playerAceCount > 0 && playerSum > 21) {
         playerAceCount -= 1
@@ -331,6 +354,7 @@ function playerAceDeduct() {
     return playerSum
 }
 
+// This subtract dealerSum value if dealer has any ace
 function dealerAceDeduct() {
     if (dealerAceCount > 0 && dealerSum > 21) {
         dealerAceCount -= 1
@@ -339,6 +363,7 @@ function dealerAceDeduct() {
     return dealerSum
 }
 
+//This add sound when audio button is pressed
 const musicEl = document.getElementById('audio')
 musicEl.addEventListener('click', playMusic)
 let musicCount = 0;
