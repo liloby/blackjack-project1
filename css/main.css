@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: 'Reggae One', cursive;
+    cursor: default;
 }
 
 body {
@@ -399,3 +400,4 @@ h2 {
     margin-top: 180px;
     margin-left: 390px;
 }
+

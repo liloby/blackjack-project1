@@ -270,6 +270,7 @@ function wrapUp() {
     // stayEl.removeEventListener('click', wrapUp)
     while (dealerSum < playerSum && dealerSum < 17 && playerSum < 22) {
     dealAnotherComputer()
+    dealerAceDeduct()
     }
 
     canHit = false
