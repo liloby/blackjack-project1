@@ -264,11 +264,12 @@ let playerSum = 0;
 let computerRound = 0;
 let dealerAceCount = 0;
 let playerAceCount = 0;
-
 let deck;
-
 let canHit = true;
 
+let currentBal = 0;
+let currentBet = 0;
+let totalBets = 0;
 
 /*----- cached element references -----*/
 const chipsEl = document.getElementById('money-chips')
@@ -287,6 +288,7 @@ const counterEl = document.getElementById('card-counter')
 const newCardEl = document.createElement('div')
 const startEl = document.getElementById('start-btn')
 const dealerCounterEl = document.getElementById('dealer-counter')
+const againEl = document.getElementById('play-again')
 
 /*----- event listeners -----*/
 //hitMe must go first
@@ -294,11 +296,60 @@ hitEl.addEventListener('click', hitMe)
 startEl.addEventListener('click', startGame)
 resetEl.addEventListener('click', resetGame)
 stayEl.addEventListener('click', wrapUp)
+againEl.addEventListener('click', playAgain)
+
+chipsEl.addEventListener('click', addBet)
+clearEl.addEventListener('click', removeBet)
 /*----- functions -----*/
+
+function addBet(evt) {
+    if (currentBal > currentBet) {
+        if (evt.target.innerHTML === '$1') {
+        currentBet += 1
+     }
+        if (evt.target.innerHTML === '$5') {
+        currentBet += 5
+        }
+        if (evt.target.innerHTML === '$10') {
+        currentBet += 10
+     }
+        console.log(currentBet)
+        betEl.innerHTML = `BETS: $ ${currentBet}`
+    }
+    // add else statement with a max-cap sound
+}
+
+function removeBet() {
+    currentBet = 0
+    betEl.innerHTML = `BETS: $ ${currentBet}`
+}
+
+function storeBet() {
+    totalBets += currentBet
+    currentBal -= currentBet
+    balEl.innerHTML = `BETS: $ ${currentBal}`
+    currentBet -= currentBet
+    betEl.innerHTML = `BETS: $ ${currentBet}`
+
+}
+
+function playAgain() {
+    resetGame()
+    storeBet()
+    againEl.classList.add('hide')
+    againEl.removeEventListener('click', playAgain)
+}
+
+window.onload = function() {
+    againEl.classList.add('hide')
+    againEl.removeEventListener('click', playAgain)
+    currentBal = 200;
+}
+
 function resetGame() {
     message.innerHTML = ""
     startEl.addEventListener('click', startGame)
-    startEl.classList.remove('hide-start')
+    startEl.classList.remove('hide')
     dealerSum = 0;
     playerSum = 0;
     computerRound = 0;
@@ -322,7 +373,7 @@ function resetGame() {
 
 function startGame() {
     startEl.removeEventListener('click', startGame)
-    startEl.classList.add('hide-start')
+    startEl.classList.add('hide')
     createDeck()
     shuffleDeck()
     startDealComputer()
@@ -462,6 +513,8 @@ function render() {
         message.innerHTML = "You Lose"
         console.log("You Lose")
     }
+    againEl.classList.remove('hide')
+    againEl.addEventListener('click', playAgain)
 }
 
 // This checks the number of aces either player or dealer has
@@ -490,7 +543,6 @@ function dealerAceDeduct() {
 
 const musicEl = document.getElementById('audio')
 musicEl.addEventListener('click', playMusic)
-
 let musicCount = 0;
 let music = new Audio('Jazz-Music.mp3')
 function playMusic() {
@@ -502,4 +554,4 @@ function playMusic() {
         musicCount -= 1
     }
 } 
-playMusic()
+// playMusic()
