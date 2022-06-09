@@ -225,7 +225,7 @@ function startDealComputer() {
 
 // This deals another card for dealer that is not the first card
 function dealAnotherComputer() {
-    if (playerSum < 22 || dealerSum < 17) {
+    if (dealerSum < 17) {
     card = deck.pop()
     dealerAceCount += checkAce(card)
     dealerAceDeduct()
