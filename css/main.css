@@ -89,8 +89,9 @@ font-size: 50px;
 line-height: 50px;
 color: #FFFFFF;
 text-align: center;
-padding-top: 50px;
+padding-top: 40px;
 margin-bottom: -45px;
+padding-bottom: 10px;
 }
 
 .computer-space {
@@ -316,19 +317,23 @@ margin-top: -106px;
 
 .card-counter {
     position: absolute;
-    margin-left: 442px;
+    margin-left: 405px;
     margin-top: 185px;
     color:white;
     font-size: 25px;
     padding: 5px;
+    width: 100px;
+    text-align: center;
 }
 
 h2 {
     position: absolute;
     margin-top: -160px;
-    margin-left: 130px;
+    margin-left: 10px;
     font-size: 50px;
     color: rgb(169, 49, 49);
+    width: 500px;
+    text-align: center;
 }
 
 .hidden {
@@ -343,6 +348,20 @@ h2 {
 
 .start-btn {
     background: yellow;
-    margin-left: 680px;
-    margin-top: 50px;
+    margin-left: 645px;
+    margin-top: -265px;
+    width: 182px;
+    height: 115px;
+}
+
+.hide-start {
+    opacity: 0%;
+    user-select: none;
+    cursor: default;
+}
+
+#dealer-counter {
+    transform: rotate(180deg);
+    margin-top: 180px;
+    margin-left: 390px;
 }

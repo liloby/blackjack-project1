@@ -286,6 +286,7 @@ const message = document.querySelector('h2')
 const counterEl = document.getElementById('card-counter')
 const newCardEl = document.createElement('div')
 const startEl = document.getElementById('start-btn')
+const dealerCounterEl = document.getElementById('dealer-counter')
 
 /*----- event listeners -----*/
 //hitMe must go first
@@ -295,6 +296,8 @@ resetEl.addEventListener('click', resetGame)
 stayEl.addEventListener('click', wrapUp)
 /*----- functions -----*/
 function resetGame() {
+    startEl.addEventListener('click', startGame)
+    startEl.classList.remove('hide-start')
     dealerSum = 0;
     playerSum = 0;
     computerRound = 0;
@@ -302,9 +305,12 @@ function resetGame() {
     playerAceCount = 0;
     deck;
     canHit = true;
+    dealerCounterEl.style.color = 'white' 
     counterEl.style.color = 'white'
-    document.getElementById('hidden-card').classList.add('back-red')
-    counterEl.innerHTML = playerSum
+    hiddenCardEl.classList.add('hidden')
+    hiddenCardEl.classList.add('back-red')
+    counterEl.innerHTML = ""
+    dealerCounterEl.innerHTML = ""
     while (playerDeck.firstChild) {
         playerDeck.removeChild(playerDeck.lastChild)
     }
@@ -314,6 +320,8 @@ function resetGame() {
 }
 
 function startGame() {
+    startEl.removeEventListener('click', startGame)
+    startEl.classList.add('hide-start')
     createDeck()
     shuffleDeck()
     startDealComputer()
@@ -355,28 +363,22 @@ function startDealComputer() {
         card = deck.pop()
         // Add fade in effect
         hiddenCardEl.classList = (`card back-red large ${card.face}`)
-        console.log(card)
         dealerSum += card.value
-        console.log("Dealer first card sum: " + dealerSum)
         computerRound++
-        console.log("computerRound: " + computerRound)
         dealerAceCount += checkAce(card)
-        console.log(dealerAceCount)
     }
     dealAnotherComputer()
 }
 // This deals another card for dealer that is not the first card
 function dealAnotherComputer() {
+    if (playerSum < 22) {
     card = deck.pop()
-    console.log("second Dealer card: " + card.value)
+    dealerAceCount += checkAce(card)
+    dealerAceDeduct()
     showDealerCards()
     dealerSum += card.value
-    console.log("Dealer second card sum: " + dealerSum)
     computerRound++
-    console.log(card)
-    console.log("computerRound: " + computerRound)
-    dealerAceCount += checkAce(card)
-    console.log(dealerAceCount)
+    }
 }
 // this reveals dealer cards that is not the hidden card
 function showDealerCards() {
@@ -390,7 +392,7 @@ function startDealPlayer() {
         card = deck.pop()
         playerSum += card.value
         playerAceCount += checkAce(card)
-        console.log("playerAceCount" + playerAceCount)
+        playerAceDeduct()
         showPlayerCards()
     }
 }
@@ -409,7 +411,7 @@ function hitMe() {
     card = deck.pop()
     playerSum += card.value
     playerAceCount += checkAce(card)
-    console.log("playerAceCount" + playerAceCount)
+    playerAceDeduct()
     showPlayerCards()
     checkBusted()
 
@@ -418,6 +420,7 @@ function hitMe() {
     }
 }
 
+//check if player got busted
 function checkBusted() {
     if (playerSum > 21) {
         counterEl.style.color = 'red' 
@@ -427,7 +430,8 @@ function checkBusted() {
 
 // when clicked on STAY this function executes
 function wrapUp() {
-    while (dealerSum < playerSum && dealerSum < 17) {
+    // stayEl.removeEventListener('click', wrapUp)
+    while (dealerSum < playerSum && dealerSum < 17 && playerSum < 22) {
     dealAnotherComputer()
     }
 
@@ -436,18 +440,24 @@ function wrapUp() {
 }
 
 function compareResults() {
-    document.getElementById('hidden-card').classList.remove('back-red')
+    dealerCounterEl.innerHTML = dealerSum
+    hiddenCardEl.classList.remove('back-red')
     if (playerSum > 21) {
         console.log("BUSTED You Lose!")
     }
     else if (dealerSum > 21) {
         //add bounty bonus
+        dealerCounterEl.style.color = 'red' 
+        message.innerHTML = "Dealer Busted <br> You Win"
         console.log("Dealer Busted. You Win")
     } else if (dealerSum == playerSum) {
+        message.innerHTML = "Its a Tie"
         console.log("Its a Tie")
     } else if (playerSum > dealerSum) {
+        message.innerHTML = "You Win"
         console.log("You Win")
     } else if (playerSum < dealerSum) {
+        message.innerHTML = "You Lose"
         console.log("You Lose")
     }
 }
@@ -460,10 +470,18 @@ function checkAce(card) {
     return 0
 }
 
-// function subtractAce(playerSum, playerAceCount) {
-//     while(playerSum > 21 && playerAceCount > 0) {
-//         playerSum -= 10
-//         playerAceCount -= 1
-//     }
-//     return playerSum
-// }
+function playerAceDeduct() {
+    if (playerAceCount > 0 && playerSum > 21) {
+        playerAceCount -= 1
+        playerSum -= 10
+    }
+    return playerSum
+}
+
+function dealerAceDeduct() {
+    if (dealerAceCount > 0 && dealerSum > 21) {
+        dealerAceCount -= 1
+        dealerSum -= 10
+    }
+    return dealerSum
+}
