@@ -151,6 +151,7 @@ font-size: 38px;
 line-height: 10px;
 color: #000000;
 margin-left: 130px;
+opacity: 50%;
 }
 
 div h3 {
@@ -160,13 +161,14 @@ font-style: normal;
 font-weight: 400;
 font-size: 60px;
 color: #FFC700;
-margin-left: 158px;
-margin-top: -50px;
+margin-left: 90px;
+margin-top: -70px;
+text-align: center;
 }
 
 
 .balance-box {
-width: 172px;
+width: 202px;
 height: 45px;
 background: #000000;
 border: 3px solid #FFC700;
@@ -179,12 +181,12 @@ color: #FFFFFF;
 margin-left: 276px;
 margin-top: 11.5px;
 margin-bottom: 50px;
-text-align: center;
+text-align: left;
 padding-top: 5px;;
 }
 
 .bet-box {
-width: 172px;
+width: 202px;
 height: 45px;
 background: #000000;
 border: 3px solid #FFC700;
@@ -194,9 +196,9 @@ font-size: 24px;
 line-height: 27px;
 position: absolute;
 color: #FFFFFF; 
-margin-left: 995px;
+margin-left: 965px;
 margin-top: 11.5px;
-text-align: center;
+text-align: left;
 padding-top: 5px;;
 }
 
@@ -287,10 +289,17 @@ margin-left: 1170px;
 }
 
 .ten-chip {
-    background: #82328F;
+    background: #2b00ff;
     border: 10px dashed #FFFFFF;
     padding-left: 2px;
     margin-top: -150px;
+}
+
+.twentyfive-chip {
+    position: absolute;
+    background: #029200;
+    border: 10px dashed #FFFFFF;
+    margin-top: -62.5px;
 }
 
 .play-btn {
