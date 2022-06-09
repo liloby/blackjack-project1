@@ -172,7 +172,7 @@
 //     hitPlayer()
 //     }
 //     if(playerSum > 21) {
-//         document.getElementById('card-counter').style.color = 'red' 
+//         counterEl.style.color = 'red' 
 //     }
 // }
 
@@ -184,7 +184,7 @@
 //     const newCardEl = document.createElement('div')
 //     newCardEl.classList = `card ${card.face} large`
 //     playerDeck.appendChild(newCardEl)
-//     document.getElementById('card-counter').innerHTML = playerSum
+//     counterEl.innerHTML = playerSum
 //     playerResults()
 // }
 
@@ -261,7 +261,7 @@
 let dealerSum = 0;
 let playerSum = 0;
 // refer to line 127
-let round = 0;
+let computerRound = 0;
 let dealerAceCount = 0;
 let playerAceCount = 0;
 
@@ -283,18 +283,41 @@ const playerDeck = document.getElementById('player-deck')
 const computerDeck = document.getElementById('computer-deck')
 const hiddenCardEl = document.getElementById('hidden-card')
 const message = document.querySelector('h2')
+const counterEl = document.getElementById('card-counter')
+const newCardEl = document.createElement('div')
+const startEl = document.getElementById('start-btn')
 
 /*----- event listeners -----*/
-
-
+//hitMe must go first
+hitEl.addEventListener('click', hitMe)
+startEl.addEventListener('click', startGame)
+resetEl.addEventListener('click', resetGame)
+stayEl.addEventListener('click', wrapUp)
 /*----- functions -----*/
-
-startGame()
+function resetGame() {
+    dealerSum = 0;
+    playerSum = 0;
+    computerRound = 0;
+    dealerAceCount = 0;
+    playerAceCount = 0;
+    deck;
+    canHit = true;
+    counterEl.style.color = 'white'
+    document.getElementById('hidden-card').classList.add('back-red')
+    counterEl.innerHTML = playerSum
+    while (playerDeck.firstChild) {
+        playerDeck.removeChild(playerDeck.lastChild)
+    }
+    while (computerDeck.lastChild.id !== 'hidden-card') {
+        computerDeck.removeChild(computerDeck.lastChild)
+    }
+}
 
 function startGame() {
     createDeck()
     shuffleDeck()
     startDealComputer()
+    startDealPlayer()
 }
 
 function createDeck() {
@@ -327,37 +350,120 @@ function shuffleDeck() {
 }
 
 function startDealComputer() {
-    // this keeps track of the hidden card
-    while (round < 1) {
+    // this keeps track and deal the hidden card for dealer
+    while (computerRound < 1) {
         card = deck.pop()
         // Add fade in effect
         hiddenCardEl.classList = (`card back-red large ${card.face}`)
         console.log(card)
         dealerSum += card.value
         console.log("Dealer first card sum: " + dealerSum)
-        round++
-        console.log("round: " + round)
+        computerRound++
+        console.log("computerRound: " + computerRound)
         dealerAceCount += checkAce(card)
         console.log(dealerAceCount)
     }
-    
+    dealAnotherComputer()
+}
+// This deals another card for dealer that is not the first card
+function dealAnotherComputer() {
     card = deck.pop()
+    console.log("second Dealer card: " + card.value)
+    showDealerCards()
+    dealerSum += card.value
+    console.log("Dealer second card sum: " + dealerSum)
+    computerRound++
+    console.log(card)
+    console.log("computerRound: " + computerRound)
+    dealerAceCount += checkAce(card)
+    console.log(dealerAceCount)
+}
+// this reveals dealer cards that is not the hidden card
+function showDealerCards() {
     const newCardEl = document.createElement('div')
     newCardEl.classList = `card ${card.face} large`
     computerDeck.appendChild(newCardEl)
-    dealerSum += card.value
-    console.log("Dealer second card sum: " + dealerSum)
-    round++
-    console.log(card)
-    console.log("round: " + round)
-    dealerAceCount += checkAce(card)
-    console.log(dealerAceCount)
+}
+// this deals player's first two cards
+function startDealPlayer() {
+    for (let i = 0; i < 2; i++) {
+        card = deck.pop()
+        playerSum += card.value
+        playerAceCount += checkAce(card)
+        console.log("playerAceCount" + playerAceCount)
+        showPlayerCards()
+    }
+}
+// this shows the cards of the player on the DOM
+function showPlayerCards() {
+    const newCardEl = document.createElement('div')
+    newCardEl.classList = `card ${card.face} large`
+    playerDeck.appendChild(newCardEl)
+    counterEl.innerHTML = playerSum
+}
+//this deal another card for the player
+function hitMe() {
+    if (canHit == false) {
+        return
+    }
+    card = deck.pop()
+    playerSum += card.value
+    playerAceCount += checkAce(card)
+    console.log("playerAceCount" + playerAceCount)
+    showPlayerCards()
+    checkBusted()
+
+    if (playerSum > 20) {
+        canHit = false;
+    }
+}
+
+function checkBusted() {
+    if (playerSum > 21) {
+        counterEl.style.color = 'red' 
+        compareResults()
+    }
+}
+
+// when clicked on STAY this function executes
+function wrapUp() {
+    while (dealerSum < playerSum && dealerSum < 17) {
+    dealAnotherComputer()
     }
 
+    canHit = false
+    compareResults()
+}
 
+function compareResults() {
+    document.getElementById('hidden-card').classList.remove('back-red')
+    if (playerSum > 21) {
+        console.log("BUSTED You Lose!")
+    }
+    else if (dealerSum > 21) {
+        //add bounty bonus
+        console.log("Dealer Busted. You Win")
+    } else if (dealerSum == playerSum) {
+        console.log("Its a Tie")
+    } else if (playerSum > dealerSum) {
+        console.log("You Win")
+    } else if (playerSum < dealerSum) {
+        console.log("You Lose")
+    }
+}
+
+// This checks the number of aces either player or dealer has
 function checkAce(card) {
     if (card.value === 11) {
         return 1
     }
     return 0
 }
+
+// function subtractAce(playerSum, playerAceCount) {
+//     while(playerSum > 21 && playerAceCount > 0) {
+//         playerSum -= 10
+//         playerAceCount -= 1
+//     }
+//     return playerSum
+// }
