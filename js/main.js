@@ -233,6 +233,7 @@ function dealAnotherComputer() {
     dealerSum += card.value
     computerRound++
     }
+    return
 }
 
 // this reveals dealer cards that is not the hidden card
@@ -273,9 +274,18 @@ function hitMe() {
     showPlayerCards()
     checkBusted()
 
-    if (playerSum > 20) {
+    if (playerSum > 20 && dealerSum > 16) {
         canHit = false;
     }
+}
+
+// This function deals card to dealer even if player is busted
+function finalDealerDeal() {
+    while (dealerSum < 17 ) {
+        dealAnotherComputer()
+        dealerAceDeduct()
+    }
+    return
 }
 
 //check if player got busted
@@ -288,25 +298,31 @@ function checkBusted() {
 
 // when clicked on STAY this function executes
 function wrapUp() {
-    while (dealerSum < playerSum && dealerSum < 17 && playerSum < 22) {
+    while (dealerSum < 17) {
     dealAnotherComputer()
     dealerAceDeduct()
     }
-
+    
     canHit = false
     render()
 }
 // This function compare results and display it
 function render() {
+    finalDealerDeal()
     dealerCounterEl.innerHTML = dealerSum
     hiddenCardEl.classList.remove('back-red')
-    if (playerSum > 21) {
+    if (dealerSum > 21 && playerSum > 21) {
+        dealerCounterEl.style.color = 'red' 
+        message.innerHTML = "Its a Tie"
+        message.style.color = "darkgray"
+        currentBal += totalBets
+        totalBets = 0
+    } else if (playerSum > 21) {
         message.innerHTML = "You Lose"
         message.style.color = "red"
         currentBal += 0
         totalBets = 0
-    }
-    else if (dealerSum > 21) {
+    } else if (dealerSum > 21) {
         //add bounty bonus
         dealerCounterEl.style.color = 'red' 
         message.innerHTML = "You Won $ " + (totalBets)
