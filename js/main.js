@@ -1,6 +1,3 @@
-/*----- constants -----*/
-
-
 /*----- app's state (variables) -----*/
 let dealerSum = 0;
 let playerSum = 0;
@@ -39,10 +36,10 @@ startEl.addEventListener('click', startGame)
 resetEl.addEventListener('click', renderResetGame)
 stayEl.addEventListener('click', wrapUp)
 againEl.addEventListener('click', renderPlayAgain)
-
 chipsEl.addEventListener('click', addBet)
 clearEl.addEventListener('click', removeBet)
 allInEl.addEventListener('click', allIn)
+
 /*----- functions -----*/
 // when the window loads, the play again button is hidden and not clickable
 window.onload = function() {
@@ -218,7 +215,7 @@ function finalDealerDeal() {
         dealAnotherComputer()
         dealerAceDeduct()
     }
-    return
+    render()
 }
 
 //check if player got busted
@@ -229,19 +226,44 @@ function checkBusted() {
     }
 }
 
+// This checks the number of aces either player or dealer has
+function checkAce(card) {
+    if (card.value === 11) {
+        return 1
+    }
+    return 0
+}
+
+// This subtract playerSum value if player has any ace
+function playerAceDeduct() {
+    if (playerAceCount > 0 && playerSum > 21) {
+        playerAceCount -= 1
+        playerSum -= 10
+    }
+    return playerSum
+}
+
+// This subtract dealerSum value if dealer has any ace
+function dealerAceDeduct() {
+    if (dealerAceCount > 0 && dealerSum > 21) {
+        dealerAceCount -= 1
+        dealerSum -= 10
+    }
+    return dealerSum
+}
+
 // when clicked on STAY this function executes
 function wrapUp() {
     while (dealerSum < 17) {
         dealAnotherComputer()
         dealerAceDeduct()
     }
-    
     canHit = false
     render()
 }
+
 // This function compare results and display it
 function render() {
-    finalDealerDeal()
     dealerCounterEl.innerHTML = dealerSum
     hiddenCardEl.classList.remove('back-red')
     if (dealerSum > 21 && playerSum > 21) {
@@ -349,32 +371,6 @@ function renderResetGame() {
     while (computerDeck.lastChild.id !== 'hidden-card') {
         computerDeck.removeChild(computerDeck.lastChild)
     }
-}
-
-// This checks the number of aces either player or dealer has
-function checkAce(card) {
-    if (card.value === 11) {
-        return 1
-    }
-    return 0
-}
-
-// This subtract playerSum value if player has any ace
-function playerAceDeduct() {
-    if (playerAceCount > 0 && playerSum > 21) {
-        playerAceCount -= 1
-        playerSum -= 10
-    }
-    return playerSum
-}
-
-// This subtract dealerSum value if dealer has any ace
-function dealerAceDeduct() {
-    if (dealerAceCount > 0 && dealerSum > 21) {
-        dealerAceCount -= 1
-        dealerSum -= 10
-    }
-    return dealerSum
 }
 
 //This add sound when audio button is pressed
