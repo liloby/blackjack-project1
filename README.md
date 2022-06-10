@@ -14,7 +14,7 @@
 10. If player ran out of money, player can reset the game by clicking on the RESET GAME button.
 
 ## Screenshots of the Game: 
-![Uploading image.png…]()
+<img width="1752" alt="image" src="https://user-images.githubusercontent.com/72634228/172966183-c3702734-91de-447d-a02f-63a1e3f6ce9e.png">
 <img width="1752" alt="image" src="https://user-images.githubusercontent.com/72634228/172964937-7b202d3d-27e3-4170-b517-510dec5e17fb.png">
 <img width="1751" alt="image" src="https://user-images.githubusercontent.com/72634228/172965245-627ade14-c251-4132-b066-7fbf40be3da6.png">
 <img width="1749" alt="image" src="https://user-images.githubusercontent.com/72634228/172965307-c385603f-bd70-4697-8bd7-d4d07d3c2e14.png">
