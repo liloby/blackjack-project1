@@ -1,0 +1,70 @@
+Game: Blackjack
+
+Wireframe: 
+
+
+Minimum
+* At least two playable space for Player and Computer
+* Table/background where the cards are place
+* The display of the cards when it is faced down vs when it is faced up(reveal)
+* Buttons to hit/stay/fold
+* Win/ Lose or score counter
+
+Bonus
+* Replace score counter with currency in the game
+* Placing different amount of bets
+* Button for changing background/table interface
+* Button for toggling background music
+* Displaying game over if currency is $0 or not enough to play another round
+* Button to reset game score/currency
+* Display current sum of card value
+
+PseudoCode:
+
+1) Define required constants
+* Define Player and Computer
+* Define Player always goes first
+* Definite the deck of cards and what value each card is equal to
+* Define win/lose condition(For example, if cards value over 21 then busted(lose) automatically or when comparing results of player vs computer, the higher value <= 21 wins)
+* Max Number of cards that can be hit
+
+
+2) Define required variables used to track the state of the game
+* Use array to store and add up the value of each card
+* Declare a changing variable to keep track of score
+* Use a winner variable to determine whos the winner or tie
+* Turn variable to keep track of turns?
+* Declare card state: hidden or revealed 
+
+
+3) Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant.
+* Score
+* Buttons for gameplay
+* Card Values
+
+
+4) Upon loading the app should:
+        4.1) Initialize the state variables
+* Initialize the playable space to 5 nulls to represent empty spaces. Each space can later represent a card/value. It is ok to have empty spaces(when clicked on stay/fold, those nulls will fill itself with value that doesn’t affect the game)
+* Initialize whose turn it is 
+* Initialize winner to null to represent there is no winner or tie yet. Winner will hold the player value (1 or -1) if there's a winner. Winner will hold a 'T' if there's a tie.
+        4.2) Render those values to the page
+        Render Playable Space:
+* Render(store and add) the playable space everytime a card is hit.
+* Render card state. When result, computer cards are revealed
+        Render a message:
+* If player has value other than null, game is still in progress. Render turn
+* If winner is equal to ‘T’ (tie), render a tie message. (Both Player/Comp value are equal)
+* Else, render a Win/Lose message to Player (Compare Player/Comp value is closer or equals 21)
+        4.3) Wait for the user to click a button
+* If player clicks stay, computer makes decision run through the storing and adding the value and compare results
+
+
+5) Handle a player clicking Hit/Stay/Fold
+* Obtain the index of playable space to display card 
+
+
+6) Handle a player clicking the playagain button or reset button
+* Playagain button reinitialize the game KEEPING the current score
+* Reset button will reinitialize the game and RESETTING the score back to 0
+Transferring the wireframe i created on figma to visual studio HTML and CSS like player space and poker chips and buttons like hit or stay or resetting the game
