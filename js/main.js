@@ -4,13 +4,11 @@
 /*----- app's state (variables) -----*/
 let dealerSum = 0;
 let playerSum = 0;
-// refer to line 127
 let computerRound = 0;
 let dealerAceCount = 0;
 let playerAceCount = 0;
 let deck;
 let canHit = true;
-
 let currentBal = 0;
 let currentBet = 0;
 let totalBets = 0;
@@ -38,14 +36,23 @@ const allInEl = document.getElementById('all-in')
 /*----- event listeners -----*/
 hitEl.addEventListener('click', hitMe)
 startEl.addEventListener('click', startGame)
-resetEl.addEventListener('click', resetGame)
+resetEl.addEventListener('click', renderResetGame)
 stayEl.addEventListener('click', wrapUp)
-againEl.addEventListener('click', playAgain)
+againEl.addEventListener('click', renderPlayAgain)
 
 chipsEl.addEventListener('click', addBet)
 clearEl.addEventListener('click', removeBet)
 allInEl.addEventListener('click', allIn)
 /*----- functions -----*/
+// when the window loads, the play again button is hidden and not clickable
+window.onload = function() {
+    hitEl.removeEventListener('click', hitMe)
+    stayEl.removeEventListener('click', wrapUp)
+    againEl.classList.add('hide')
+    againEl.removeEventListener('click', renderPlayAgain)
+    currentBal = 200;
+}
+
 // This function allow players to use the Betting system
 function addBet(evt) {
     if (currentBal > currentBet) {
@@ -90,80 +97,6 @@ function storeBet() {
 
 }
 
-// This saves current balance but reset everything else.
-function playAgain() {
-    nextRound()
-    againEl.classList.add('hide')
-    againEl.removeEventListener('click', playAgain)
-}
-
-// when the window loads, the play again button is hidden and not clickable
-window.onload = function() {
-    hitEl.removeEventListener('click', hitMe)
-    stayEl.removeEventListener('click', wrapUp)
-    againEl.classList.add('hide')
-    againEl.removeEventListener('click', playAgain)
-    currentBal = 200;
-}
-
-// This saves current balance, and delete everything else
-function nextRound() {
-    message.innerHTML = ""
-    startEl.addEventListener('click', startGame)
-    startEl.classList.remove('hide')
-    dealerSum = 0;
-    playerSum = 0;
-    computerRound = 0;
-    dealerAceCount = 0;
-    playerAceCount = 0;
-    deck;
-    canHit = true;
-    dealerCounterEl.style.color = 'white' 
-    counterEl.style.color = 'white'
-    hiddenCardEl.classList.add('hidden')
-    hiddenCardEl.classList.add('back-red')
-    counterEl.innerHTML = ""
-    dealerCounterEl.innerHTML = ""
-    while (playerDeck.firstChild) {
-        playerDeck.removeChild(playerDeck.lastChild)
-    }
-    while (computerDeck.lastChild.id !== 'hidden-card') {
-        computerDeck.removeChild(computerDeck.lastChild)
-    }
-}
-
-// This resets the game when the reset button is pressed
-function resetGame() {
-    againEl.classList.add('hide')
-    againEl.removeEventListener('click', playAgain)
-    currentBal = 200;
-    totalBets = 0
-    balEl.innerHTML = `BAL: $ ${currentBal}`
-    totalBetsEl.innerHTML = ""
-    message.innerHTML = ""
-    startEl.addEventListener('click', startGame)
-    startEl.classList.remove('hide')
-    dealerSum = 0;
-    playerSum = 0;
-    computerRound = 0;
-    dealerAceCount = 0;
-    playerAceCount = 0;
-    deck;
-    canHit = true;
-    dealerCounterEl.style.color = 'white' 
-    counterEl.style.color = 'white'
-    hiddenCardEl.classList.add('hidden')
-    hiddenCardEl.classList.add('back-red')
-    counterEl.innerHTML = ""
-    dealerCounterEl.innerHTML = ""
-    while (playerDeck.firstChild) {
-        playerDeck.removeChild(playerDeck.lastChild)
-    }
-    while (computerDeck.lastChild.id !== 'hidden-card') {
-        computerDeck.removeChild(computerDeck.lastChild)
-    }
-}
-
 // This starts the game when the start button is pressed
 function startGame() {
     if (currentBet > 0){
@@ -184,15 +117,15 @@ function createDeck() {
     const suits = ['d', 'c', 'h', 's']
     const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', "J", 'Q', 'K', 'A']
     deck = []
-
+    
     suits.forEach(function(suit) {
         ranks.forEach(function(rank) {
             deck.push({
                 
                 face: `${suit}${rank}`,
-
+                
                 value: Number(rank) || (rank === 'A' ? 11 : 10)
-
+                
             })
         })
     })
@@ -226,14 +159,14 @@ function startDealComputer() {
 // This deals another card for dealer that is not the first card
 function dealAnotherComputer() {
     if (dealerSum < 17) {
-    card = deck.pop()
-    dealerAceCount += checkAce(card)
+        card = deck.pop()
+        dealerAceCount += checkAce(card)
+        dealerAceDeduct()
+        showDealerCards()
+        dealerSum += card.value
+        computerRound++
+    } 
     dealerAceDeduct()
-    showDealerCards()
-    dealerSum += card.value
-    computerRound++
-    }
-    return
 }
 
 // this reveals dealer cards that is not the hidden card
@@ -273,7 +206,7 @@ function hitMe() {
     playerAceDeduct()
     showPlayerCards()
     checkBusted()
-
+    
     if (playerSum > 20 && dealerSum > 16) {
         canHit = false;
     }
@@ -299,8 +232,8 @@ function checkBusted() {
 // when clicked on STAY this function executes
 function wrapUp() {
     while (dealerSum < 17) {
-    dealAnotherComputer()
-    dealerAceDeduct()
+        dealAnotherComputer()
+        dealerAceDeduct()
     }
     
     canHit = false
@@ -348,9 +281,74 @@ function render() {
     hitEl.removeEventListener('click', hitMe)
     stayEl.removeEventListener('click', wrapUp)
     againEl.classList.remove('hide')
-    againEl.addEventListener('click', playAgain)
+    againEl.addEventListener('click', renderPlayAgain)
     balEl.innerHTML = `BAL: $ ${currentBal}`
     totalBetsEl.innerHTML = ""
+}
+
+// This saves current balance but reset everything else.
+function renderPlayAgain() {
+    renderNextRound()
+    againEl.classList.add('hide')
+    againEl.removeEventListener('click', renderPlayAgain)
+}
+
+// This saves current balance, and delete everything else
+function renderNextRound() {
+    message.innerHTML = ""
+    startEl.addEventListener('click', startGame)
+    startEl.classList.remove('hide')
+    dealerSum = 0;
+    playerSum = 0;
+    computerRound = 0;
+    dealerAceCount = 0;
+    playerAceCount = 0;
+    deck;
+    canHit = true;
+    dealerCounterEl.style.color = 'white' 
+    counterEl.style.color = 'white'
+    hiddenCardEl.classList.add('hidden')
+    hiddenCardEl.classList.add('back-red')
+    counterEl.innerHTML = ""
+    dealerCounterEl.innerHTML = ""
+    while (playerDeck.firstChild) {
+        playerDeck.removeChild(playerDeck.lastChild)
+    }
+    while (computerDeck.lastChild.id !== 'hidden-card') {
+        computerDeck.removeChild(computerDeck.lastChild)
+    }
+}
+
+// This resets the game when the reset button is pressed
+function renderResetGame() {
+    againEl.classList.add('hide')
+    againEl.removeEventListener('click', renderPlayAgain)
+    currentBal = 200;
+    totalBets = 0
+    balEl.innerHTML = `BAL: $ ${currentBal}`
+    totalBetsEl.innerHTML = ""
+    message.innerHTML = ""
+    startEl.addEventListener('click', startGame)
+    startEl.classList.remove('hide')
+    dealerSum = 0;
+    playerSum = 0;
+    computerRound = 0;
+    dealerAceCount = 0;
+    playerAceCount = 0;
+    deck;
+    canHit = true;
+    dealerCounterEl.style.color = 'white' 
+    counterEl.style.color = 'white'
+    hiddenCardEl.classList.add('hidden')
+    hiddenCardEl.classList.add('back-red')
+    counterEl.innerHTML = ""
+    dealerCounterEl.innerHTML = ""
+    while (playerDeck.firstChild) {
+        playerDeck.removeChild(playerDeck.lastChild)
+    }
+    while (computerDeck.lastChild.id !== 'hidden-card') {
+        computerDeck.removeChild(computerDeck.lastChild)
+    }
 }
 
 // This checks the number of aces either player or dealer has
@@ -393,4 +391,3 @@ function playMusic() {
         musicCount -= 1
     }
 } 
-// playMusic()
