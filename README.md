@@ -14,10 +14,10 @@
 10. If player ran out of money, player can reset the game by clicking on the RESET GAME button.
 
 ## Screenshots of the Game: 
-<img width="1752" alt="image" src="https://user-images.githubusercontent.com/72634228/172966183-c3702734-91de-447d-a02f-63a1e3f6ce9e.png">
-<img width="1752" alt="image" src="https://user-images.githubusercontent.com/72634228/172964937-7b202d3d-27e3-4170-b517-510dec5e17fb.png">
-<img width="1751" alt="image" src="https://user-images.githubusercontent.com/72634228/172965245-627ade14-c251-4132-b066-7fbf40be3da6.png">
-<img width="1749" alt="image" src="https://user-images.githubusercontent.com/72634228/172965307-c385603f-bd70-4697-8bd7-d4d07d3c2e14.png">
+<img width="1538" alt="image" src="https://user-images.githubusercontent.com/72634228/173108933-87a61a7b-63d1-40e3-bc2a-d1d92beddee9.png">
+<img width="1530" alt="image" src="https://user-images.githubusercontent.com/72634228/173109035-55cd7ede-d938-468a-981b-8a485951c32d.png">
+<img width="1538" alt="image" src="https://user-images.githubusercontent.com/72634228/173109226-d082778a-8d20-4818-8471-c4dbaf325b3f.png">
+<img width="1527" alt="image" src="https://user-images.githubusercontent.com/72634228/173109391-e42f7e93-bdcf-499f-acb2-8c21b502995b.png">
 
 #### Future Updates:
 1. Additional win conditions for Bigger Win Bonuses
