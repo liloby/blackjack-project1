@@ -23,7 +23,7 @@
 #### Future Updates:
 1. Additional win conditions for Bigger Win Bonuses
 2. Mini-game when player reaches certain amount of rounds
-3. More sound and special effects!
+3. More sound and special effects for smoother gameplay
   
 ##### Technology Used:
     HTML
