@@ -36,6 +36,7 @@ h1 {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+    transform: translate(-22%);
 }
 
 .audio {
@@ -89,7 +90,7 @@ h1 {
     margin-top: 180px;
     margin-left: 200px;
     position: absolute;
-    transform: scale(80%);
+    transform: scale(80%) translate(-10%, -10%);
 }
 
 .inner-table {
