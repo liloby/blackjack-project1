@@ -64,7 +64,6 @@ function addBet(evt) {
      }  if (evt.target.innerHTML === '$25') {
         currentBet += 25
      }
-        console.log(currentBet)
         betEl.innerHTML = `BETS: $ ${currentBet}`
     }
     // add else statement with a max-cap sound
@@ -121,6 +120,7 @@ function createDeck() {
                 
                 face: `${suit}${rank}`,
                 
+                // if the rank is a number, then it is a number, if it is not a number, apply values accordingly.
                 value: Number(rank) || (rank === 'A' ? 11 : 10)
                 
             })
@@ -132,9 +132,13 @@ function createDeck() {
 // This function shuffles the deck that we created
 function shuffleDeck() {
     for (let i = 0; i < deck.length; i++) {
+        // Selects a random number between 0-51
         let randomizeNum = Math.floor(Math.random() * deck.length)
+        // Apply randomCard to whatever the random number is to the deck
         let randomCard = deck[i]
+        // This determine what the card is
         deck[i] = deck[randomizeNum]
+        // This finalizes the random card
         deck[randomizeNum] = randomCard
     }
 }
