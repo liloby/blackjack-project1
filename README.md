@@ -26,6 +26,5 @@
 3. More sound and special effects for smoother gameplay
   
 ##### Technology Used:
-    HTML
-    CSS
-    JAVASCRIPT
+    HTML, CSS, Javascript, Figma
+    Git, Github, VS Code
