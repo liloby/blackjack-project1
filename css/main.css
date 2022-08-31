@@ -4,28 +4,33 @@
     cursor: default;
 }
 
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
 body {
     display: flex;
     background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3647f09a-5a82-4617-9b2e-c996e8c1b7ce/d7intx0-70f5b93f-487e-4712-a8ce-925bee9b2d35.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM2NDdmMDlhLTVhODItNDYxNy05YjJlLWM5OTZlOGMxYjdjZVwvZDdpbnR4MC03MGY1YjkzZi00ODdlLTQ3MTItYThjZS05MjViZWU5YjJkMzUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Aih9zA8zIP4culy-jkpdsC1DgKCm4_kwSh-oyRRqtXU");
     background-size: cover;
     background-position: center;
     background-position: fixed;
-    width: 120vw;
-    height: 120vh;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
-    width: 544px;
-    height: 109px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    height: 11%;
     font-style: normal;
     font-weight: 900;
     font-size: 79px;
-    line-height: 100px;
     color: #000000;
-    position: absolute;
-    margin-left: 680px;
-    margin-top: 10px;
-    text-align: center;
     border-top: 2px solid black;
     border-left: 1px solid black;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.9);
@@ -36,7 +41,6 @@ h1 {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    transform: translate(-22%);
 }
 
 .audio {
@@ -51,6 +55,8 @@ h1 {
     color: #000000;
     cursor: pointer;
     position: absolute;
+    left: .5rem;
+    top: 1%;
 }
 
 .audio:hover {
@@ -74,139 +80,161 @@ h1 {
     color: #000000;
     cursor: pointer;
     position: absolute;
-    top: 90px;
-
+    left: .5rem;
+    top: 10.5%;
 }
 
 .outer-table {
-    width: 1488px;
-    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 70%;
     background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("https://cdn.pixabay.com/photo/2013/08/10/11/04/fire-171229_1280.jpg");
     background-blend-mode: darken;
     background-size: contain;
     border: 2px rgb(255, 200, 0) solid;
     border-radius: 50%;
     box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.609);
-    margin-top: 180px;
-    margin-left: 200px;
-    position: absolute;
-    transform: scale(80%) translate(-10%, -10%);
+    padding: 1.3rem;
 }
 
 .inner-table {
-    width: 1440px;
-    height: 1024px;
+    display: flex;
+    width: 100%;
+    height: 100%;
     background: #2EA723;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: 1.5px solid rgb(175, 166, 0);
     border-radius: 50%;
-    margin-top: 27px;
-    margin-left: 22px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center
 }
 
 .dealer {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 20%;
     font-style: normal;
     font-weight: 400;
     font-size: 50px;
     line-height: 50px;
     color: #FFFFFF;
     text-align: center;
-    padding-top: 40px;
-    margin-bottom: -45px;
-    padding-bottom: 10px;
+    margin: 1rem;
 }
 
 .computer-space {
-    width: 891px;
-    height: 179px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 70%;
+    height: 23.5%;
     background: #1C7535;
-    margin-left: 270px;
-    margin-top: 80px;
+    margin-top: 1.5rem;
     border: 2px solid black;
     box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
     transform: rotate(180deg);
 }
 
+.computer-deck {
+    display: flex;
+    width: 100%;
+    height: 18rem;
+}
+
 .player-space {
-    width: 891px;
-    height: 179px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 23.5%;
     background: #1C7535;
     mix-blend-mode: normal;
-    margin-left: 276px;
-    margin-top: 58px;
     border: 2px solid black;
     box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
+.player-deck {
+    display: flex;
+    width: 100%;
+    height: 18rem;
+}
+
 .bet-section {
-    width: 524px;
-    height: 333px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
     background: rgba(114, 161, 82, 0.849);
     border: 10px dashed #d6a916;
     border-radius: 50%;
-    margin-left: 470px;
-    margin-top: 30px;
+    padding: 2rem;
     margin-bottom: -30px;
 }
 
 div h4 {
-    width: 250px;
-    height: 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-style: normal;
     font-weight: 400;
     font-size: 38px;
-    line-height: 10px;
     color: #000000;
-    margin-left: 130px;
     opacity: 50%;
+    margin: 0 auto;
 }
 
 div h3 {
-    width: 311.36px;
-    height: 134.33px;
+    display: flex;
+    flex-direction: column;
     font-style: normal;
     font-weight: 400;
     font-size: 60px;
     color: #FFC700;
-    margin-left: 90px;
-    margin-top: -70px;
-    text-align: center;
+    padding: 0;
+    margin: 0 auto;
 }
 
+.money-box {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0;
+}
 
 .balance-box {
-    width: 202px;
-    height: 45px;
+    display: flex;
+    flex-direction: column;
     background: #000000;
     border: 3px solid #FFC700;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 27px;
-    position: absolute;
     color: #FFFFFF;
-    margin-left: 276px;
-    margin-top: 11.5px;
-    margin-bottom: 50px;
-    text-align: left;
-    padding-top: 5px;;
+    padding: .3rem 1rem;
+    margin: 0;
 }
 
 .bet-box {
-    width: 202px;
-    height: 45px;
+    display: flex;
+    flex-direction: column;
     background: #000000;
     border: 3px solid #FFC700;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 27px;
-    position: absolute;
     color: #FFFFFF; 
-    margin-left: 965px;
-    margin-top: 11.5px;
     text-align: left;
-    padding-top: 5px;;
+    padding: .3rem 1rem;
+    margin: 0;
 }
 
 .rebet-btn {
@@ -246,8 +274,10 @@ div h3 {
 }
 
 .btn-group1 {
-    margin-left: 148px;
-    margin-top: -174px;
+display: flex;
+flex-direction: column;
+width: 100%;
+transform: translate(5%,-100%);
 }
 
 .clear-btn:hover {
@@ -282,6 +312,10 @@ div h3 {
     user-select: none;
 }
 
+.money-chips {
+    display: flex;
+    flex-direction: column;
+}
 
 .one-chip {
     background: #FFFFFF;
@@ -299,19 +333,14 @@ div h3 {
     background: #2b00ff;
     border: 10px dashed #FFFFFF;
     padding-left: 2px;
-    margin-top: -150px;
 }
 
 .twentyfive-chip {
-    position: absolute;
     background: #029200;
     border: 10px dashed #FFFFFF;
-    margin-top: -62.5px;
 }
 
 .play-btn {
-    width: 112px;
-    height: 105px;
     border-radius: 50%; 
     font-style: normal;
     font-weight: 400;
@@ -335,10 +364,10 @@ div h3 {
 }
 .start-btn {
     background: yellow;
-    margin-left: 590px;
-    margin-top: -288px;
-    width: 282px;
-    height: 160px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 30%;
     line-height: 50px;
     border-radius: 10%;
     transition: 500ms;
@@ -350,41 +379,40 @@ div h3 {
 
 .hit-btn {
     background: #49FF0A;
-    margin-left: 520px;
-    margin-top: 24px;
+
 }
 
 .stay-btn {
     background: #E90505;
-    margin-left: 840px;
-    margin-top: -110px;
+}
+
+.hit-stay {
+    display: flex;
 }
 
 .card-counter {
-    position: absolute;
-    margin-left: 405px;
-    margin-top: 185px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     color:white;
     font-size: 25px;
     padding: 5px;
-    width: 100px;
+    margin: .5rem;
     text-align: center;
 }
 
 #dealer-counter {
-    transform: rotate(180deg);
-    margin-top: 180px;
-    margin-left: 390px;
+    height: 100%;
 }
 
 h2 {
-    position: absolute;
-    margin-top: -160px;
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
     font-size: 50px;
     color: rgb(169, 49, 49);
-    width: 500px;
+    width: 100%;
     text-align: center;
+    margin: 0 auto;
 }
 
 .hidden {
@@ -393,6 +421,11 @@ h2 {
 }
 
 .card {
+    display: flex;
+    height: 75%;
+    width: 11.8%;
+    background-position: center;
+    background-size: contain;
     cursor: default;
     box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
     transition: 800ms;
@@ -400,11 +433,11 @@ h2 {
 
 
 .again-btn {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
     background: rgb(51, 96, 104);
-    margin-left: 636px;
     margin-top: 15px;
-    width: 200px;
-    height: 130px; 
     opacity: 80%;
     border-radius: 20%;
     color: rgb(255, 255, 255);
