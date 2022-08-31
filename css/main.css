@@ -88,7 +88,7 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 70%;
+    height: 55rem;
     background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("https://cdn.pixabay.com/photo/2013/08/10/11/04/fire-171229_1280.jpg");
     background-blend-mode: darken;
     background-size: contain;
@@ -123,11 +123,10 @@ h1 {
     height: 20%;
     font-style: normal;
     font-weight: 400;
-    font-size: 5vmin;
+    font-size: 3.5vmin;
     line-height: 50px;
     color: #FFFFFF;
     text-align: center;
-    margin: 1rem;
 }
 
 .computer-space {
@@ -141,12 +140,13 @@ h1 {
     border: 2px solid black;
     box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
     transform: rotate(180deg);
+    border-radius: 1rem;
 }
 
 .computer-deck {
     display: flex;
     width: 100%;
-    height: 18rem;
+    height: 8rem;
 }
 
 .player-space {
@@ -158,32 +158,34 @@ h1 {
     mix-blend-mode: normal;
     border: 2px solid black;
     box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 1rem;
 }
 
 .player-deck {
     display: flex;
     width: 100%;
-    height: 18rem;
+    height: 8rem;
 }
 
 .bet-section {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 35%;
     background: rgba(114, 161, 82, 0.849);
     border: 10px dashed #d6a916;
     border-radius: 50%;
     padding: 2rem;
-    margin-bottom: -30px;
+    margin: 1rem 1rem 0 1rem;
 }
 
 div h4 {
+    width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-style: normal;
     font-weight: 400;
-    font-size: 4vmin;
+    font-size: 3vmin;
     color: #000000;
     opacity: 50%;
     margin: 0 auto;
@@ -198,14 +200,16 @@ div h3 {
     color: #FFC700;
     padding: 0;
     margin: 0 auto;
+    height: 3rem;
 }
 
 .money-box {
     display: flex;
     width: 70%;
     justify-content: space-between;
-    margin: 0 auto;
+    margin: .1rem auto;
     padding: 0;
+    margin-top: -1.8rem;
 }
 
 .balance-box {
@@ -215,11 +219,16 @@ div h3 {
     border: 3px solid #FFC700;
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 2vmin;
     line-height: 27px;
     color: #FFFFFF;
     padding: .3rem 1rem;
     margin: 0;
+}
+
+.bet-station {
+    display: flex;
+    width: 65%;
 }
 
 .bet-box {
@@ -229,7 +238,7 @@ div h3 {
     border: 3px solid #FFC700;
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 2vmin;
     line-height: 27px;
     color: #FFFFFF; 
     text-align: left;
@@ -238,46 +247,40 @@ div h3 {
 }
 
 .rebet-btn {
-    width: 124px;
-    height: 66px;
     background: #4BB2D2;
     border: 2px solid #000000;
     font-style: normal;
     font-weight: 400;
-    font-size: 28px;
-    line-height: 31px;
+    font-size: 2vmin;
     display: flex;
     align-items: center;
     text-align: center;
     color: #FFFEFF;
     border-radius: 50%;
-    padding: 10px;
+    padding: 1rem;
     cursor: pointer;
 }
 
 .clear-btn {
-    width: 124px;
-    height: 66px;
     background: #4BB2D2;
     border: 2px solid #000000;
     font-style: normal;
     font-weight: 400;
-    font-size: 28px;
-    line-height: 31px;
+    font-size: 2vmin;
     display: flex;
     align-items: center;
     text-align: center;
     color: #FFFEFF;
     border-radius: 50%;
-    padding: 10px;
+    padding: 1rem;
     cursor: pointer;
 }
 
 .btn-group1 {
 display: flex;
-flex-direction: column;
+flex-direction: row;
 width: 100%;
-transform: translate(5%,-100%);
+
 }
 
 .clear-btn:hover {
@@ -289,22 +292,20 @@ transform: translate(5%,-100%);
 }
 
 .chips {
-    width: 66.82px;
-    height: 62.2px;
+    height: 3.5rem;
+    width: 3.5rem;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.5vmin;
     line-height: 31px;
-    display: flex;
-    align-items: center;
-    text-align: center;
     color: #FFC700;
     cursor: pointer;
     text-align: center;
     box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
-    margin-left: 1170px;
     transition: transform .5s ease-in-out;
+    display: flex;
+    align-items: center
 }
 
 .chips:hover {
@@ -314,7 +315,8 @@ transform: translate(5%,-100%);
 
 .money-chips {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
+    gap: .3rem;
 }
 
 .one-chip {
@@ -344,13 +346,12 @@ transform: translate(5%,-100%);
     border-radius: 50%; 
     font-style: normal;
     font-weight: 400;
-    font-size: 38px;
-    line-height: 38px;
+    font-size: 2.5vmin;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10px;
+    padding: .5rem;
     color: #000000;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: 1px solid #000000;
@@ -371,6 +372,8 @@ transform: translate(5%,-100%);
     line-height: 50px;
     border-radius: 10%;
     transition: 500ms;
+    position: absolute;
+    top: 47%;
 }
 
 .start-btn:hover {
@@ -388,6 +391,9 @@ transform: translate(5%,-100%);
 
 .hit-stay {
     display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .card-counter {
@@ -396,13 +402,12 @@ transform: translate(5%,-100%);
     flex-wrap: wrap;
     color:white;
     font-size: 25px;
-    padding: 5px;
-    margin: .5rem;
     text-align: center;
 }
 
 #dealer-counter {
     height: 100%;
+    margin: -.3rem 0;
 }
 
 h2 {
@@ -413,6 +418,7 @@ h2 {
     width: 100%;
     text-align: center;
     margin: 0 auto;
+    height: 3rem;
 }
 
 .hidden {
@@ -423,7 +429,8 @@ h2 {
 .card {
     display: flex;
     height: 92.5%;
-    width: 11.8%;
+    width: 7vw;
+    max-width: 10rem;
     background-position: center;
     background-size: contain;
     cursor: default;
@@ -437,11 +444,12 @@ h2 {
     flex-direction: column;
     width: 20%;
     background: rgb(51, 96, 104);
-    margin-top: 15px;
     opacity: 80%;
     border-radius: 20%;
     color: rgb(255, 255, 255);
     transition: transform 300ms ease-in-out;
+    position: absolute;
+    top: 70%;
 }
 
 .again-btn:hover {

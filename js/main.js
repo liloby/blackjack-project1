@@ -335,8 +335,8 @@ function renderNextRound() {
     counterEl.style.color = 'white'
     hiddenCardEl.classList.add('hidden')
     hiddenCardEl.classList.add('back-red')
-    counterEl.innerHTML = ""
-    dealerCounterEl.innerHTML = ""
+    counterEl.innerHTML = "0"
+    dealerCounterEl.innerHTML = "0"
     while (playerDeck.firstChild) {
         playerDeck.removeChild(playerDeck.lastChild)
     }
