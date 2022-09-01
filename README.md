@@ -20,6 +20,10 @@
 <img width="1518" alt="image" src="https://user-images.githubusercontent.com/72634228/173109887-cbee0400-a6a5-4ac0-b7b1-1c1eb9801dfe.png">
 <img width="1527" alt="image" src="https://user-images.githubusercontent.com/72634228/173109391-e42f7e93-bdcf-499f-acb2-8c21b502995b.png">
 
+## Mobile Version:
+<img width="387" alt="image" src="https://user-images.githubusercontent.com/72634228/187874253-7e2d7051-7ed1-4506-8013-83eeb6afc30a.png">
+
+
 #### Future Updates:
 1. Additional win conditions for Bigger Win Bonuses
 2. Mini-game when player reaches certain amount of rounds
