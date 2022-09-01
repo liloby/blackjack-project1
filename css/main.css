@@ -6,7 +6,7 @@
 
 html {
     height: 100vh;
-    width: 100vw;
+    width: 95vw;
 }
 
 body {
@@ -15,25 +15,31 @@ body {
     background-size: cover;
     background-position: center;
     background-position: fixed;
-    width: 100vw;
+    width: 98vw;
     height: 100vh;
     flex-direction: column;
     align-items: center;
+}
+
+.header-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
-    height: 11%;
     font-style: normal;
     font-weight: 900;
-    font-size: 6.5vmin;
+    font-size: 5.5vmin;
     color: #000000;
     border-top: 2px solid black;
     border-left: 1px solid black;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.9);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.9);
+    padding: 1rem;
+    margin: .5rem 0 3rem 0;
 }
 
 .gradient-text {
@@ -43,20 +49,15 @@ h1 {
     color: transparent;
 }
 
-.audio {
-    width: 210px;
-    height: 70px;   
+.audio {  
     background: #D9D9D9;
     border: 1px solid #000000;
     font-style: normal;
     font-weight: 400;
-    font-size: 27px;
-    line-height: 27px;
+    font-size: 2.7vmin;
     color: #000000;
     cursor: pointer;
-    position: absolute;
-    left: .5rem;
-    top: 1%;
+    height: 50%;
 }
 
 .audio:hover {
@@ -68,27 +69,23 @@ h1 {
 }
 
 .reset {
-    width: 210px;
-    height: 70px;
-    padding: 3px;
     background: #D9D9D9;
     border: 1px solid #000000;
     font-style: normal;
     font-weight: 400;
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 2.7vmin;
     color: #000000;
     cursor: pointer;
-    position: absolute;
-    left: .5rem;
-    top: 10.5%;
+    height: 50%;
 }
 
 .outer-table {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    height: 55rem;
+    width: 80%;
+    height: 85%;
+    max-width: 65rem;
+    max-height: 55rem;
     background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url("https://cdn.pixabay.com/photo/2013/08/10/11/04/fire-171229_1280.jpg");
     background-blend-mode: darken;
     background-size: contain;
@@ -120,13 +117,12 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 70%;
-    height: 20%;
     font-style: normal;
     font-weight: 400;
     font-size: 3.5vmin;
-    line-height: 50px;
     color: #FFFFFF;
     text-align: center;
+    margin: .5rem 0;
 }
 
 .computer-space {
@@ -134,7 +130,6 @@ h1 {
     flex-direction: column;
     justify-content: flex-end;
     width: 70%;
-    height: 23.5%;
     background: #1C7535;
     margin-top: 1.5rem;
     border: 2px solid black;
@@ -144,16 +139,16 @@ h1 {
 }
 
 .computer-deck {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
     width: 100%;
-    height: 8rem;
+    height: 7rem;
 }
 
 .player-space {
     display: flex;
     flex-direction: column;
     width: 70%;
-    height: 23.5%;
     background: #1C7535;
     mix-blend-mode: normal;
     border: 2px solid black;
@@ -162,18 +157,20 @@ h1 {
 }
 
 .player-deck {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
     width: 100%;
-    height: 8rem;
+    height: 7rem;
 }
 
 .bet-section {
     display: flex;
     flex-direction: column;
     width: 35%;
+    height: 100%;
     background: rgba(114, 161, 82, 0.849);
     border: 10px dashed #d6a916;
-    border-radius: 50%;
+    border-radius: 3rem;
     padding: 2rem;
     margin: 1rem 1rem 0 1rem;
 }
@@ -224,6 +221,7 @@ div h3 {
     color: #FFFFFF;
     padding: .3rem 1rem;
     margin: 0;
+    border-radius: 2rem;
 }
 
 .bet-station {
@@ -236,6 +234,7 @@ div h3 {
     flex-direction: column;
     background: #000000;
     border: 3px solid #FFC700;
+    border-radius: 2rem;
     font-style: normal;
     font-weight: 400;
     font-size: 2vmin;
@@ -292,8 +291,8 @@ width: 100%;
 }
 
 .chips {
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 80%;
+    width: 100%;
     font-style: normal;
     font-weight: 400;
     font-size: 1.5vmin;
@@ -305,7 +304,7 @@ width: 100%;
     border-radius: 50%;
     transition: transform .5s ease-in-out;
     display: flex;
-    align-items: center
+    align-items: center;
 }
 
 .chips:hover {
@@ -322,13 +321,13 @@ width: 100%;
 .one-chip {
     background: #FFFFFF;
     border: 10px dashed #000000;
-    padding-left: 8px;
+    padding: 0 .5rem;
 }
 
 .five-chip {
     background: #FF0000;
     border: 10px dashed #FFFFFF;
-    padding-left: 7.5px;
+    padding: 0 .5rem;
 }
 
 .ten-chip {
@@ -343,7 +342,7 @@ width: 100%;
 }
 
 .play-btn {
-    border-radius: 50%; 
+    border-radius: 3rem; 
     font-style: normal;
     font-weight: 400;
     font-size: 2.5vmin;
@@ -370,7 +369,7 @@ width: 100%;
     padding: 2rem;
     width: 30%;
     line-height: 50px;
-    border-radius: 10%;
+    border-radius: 2rem;
     transition: 500ms;
     position: absolute;
     top: 47%;
@@ -401,19 +400,18 @@ width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
     color:white;
-    font-size: 25px;
+    font-size: 2vmin;
     text-align: center;
 }
 
 #dealer-counter {
-    height: 100%;
     margin: -.3rem 0;
 }
 
 h2 {
     display: flex;
     flex-direction: column;
-    font-size: 3.5vmin;
+    font-size: 2.5vmin;
     color: rgb(169, 49, 49);
     width: 100%;
     text-align: center;
@@ -428,14 +426,14 @@ h2 {
 
 .card {
     display: flex;
-    height: 92.5%;
-    width: 7vw;
-    max-width: 10rem;
+    height: 6.5rem;
+    width: 4.8rem;
     background-position: center;
     background-size: contain;
     cursor: default;
     box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
     transition: 800ms;
+    margin: .3rem;
 }
 
 
@@ -445,11 +443,11 @@ h2 {
     width: 20%;
     background: rgb(51, 96, 104);
     opacity: 80%;
-    border-radius: 20%;
+    border-radius: 2rem;
     color: rgb(255, 255, 255);
     transition: transform 300ms ease-in-out;
     position: absolute;
-    top: 70%;
+    top: 65%;
 }
 
 .again-btn:hover {
@@ -464,3 +462,177 @@ h2 {
 }
 
 
+@media only screen and (max-width: 1080px), screen and (max-height: 1000px) {
+    .bet-section h4, .bet-section h2, .bet-section h3 {
+        font-size: 2vmin;
+    }
+    .outer-table {
+        width: 90%;
+    }
+    h1 {
+        margin: .5rem;
+    }
+    .dealer {
+        margin: 1rem;
+    }
+    .bet-section {
+        height: 20%;
+        margin: 3.5rem 0;
+    }
+    .player-deck, .computer-deck {
+        height: 5.5rem;
+    }
+    .card {
+        height: 5rem;
+        width: 3.8rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .outer-table {
+        width: 100%;
+        border-radius: 5rem;
+    }
+    .inner-table {
+        border-radius: 5rem;
+    }
+    .card {
+        height: 3.2rem;
+        width: 2.2rem;
+    }
+    .player-deck, .computer-deck {
+        height: 3.8rem;
+    }
+    .items {
+        margin-top: 1rem;
+    }
+    .bet-section {
+        margin: 6rem 0;
+        width: 50%;
+    }
+    .bet-station {
+        width: 95%;
+    }
+    .chips {
+        font-size: 1rem;
+    }
+    .one-chip {
+        border: 5px dashed #000000;
+        padding: 0 .2rem;
+    }
+    
+    .five-chip {
+        border: 5px dashed #FFFFFF;
+        padding: 0 .2rem;
+    }
+    
+    .ten-chip {
+        border: 5px dashed #FFFFFF;
+        padding: .2rem 0;
+    }
+    
+    .twentyfive-chip {
+        border: 5px dashed #FFFFFF;
+        padding: .2rem 0;
+    }
+    .computer-space, .player-space {
+        width: 90%;
+    }
+    .again-btn {
+        top: 73.5%;
+    }
+    .money-chips {
+        align-items: center
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .start-btn {
+        top: 45%;
+        width: 50%;
+    }
+
+}
+
+@media only screen and (max-width: 420px) {
+    .reset, .audio {
+        height: 70%;
+    }
+
+}
+
+@media only screen and (max-height: 830px) {
+    .bet-section {
+        margin: 4rem;
+    }
+    .again-btn {
+        top: 70%;
+    }
+    .start-btn {
+        top: 43.8%;
+    }
+}
+
+@media only screen and (max-width: 500px) and (max-height: 830px) { 
+    .bet-section {
+        margin: 2.5rem;
+    }
+    .start-btn {
+        top: 44.8%;
+    }
+    .again-btn {
+        top: 71.5%;
+    }
+    .computer-space, .player-space {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-height: 1181px) {
+    .bet-section {
+        margin: 5.5rem 0;
+    }
+    .start-btn {
+        top: 37.2%;
+    }
+    .again-btn {
+        top: 62%;
+    }
+}
+
+@media only screen and (min-width: 1000px) and (max-height: 850px) {
+    .outer-table {
+        height: 90%;
+    }
+    .bet-section {
+        margin: 2rem 0;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-height: 600px) {
+    .outer-table {
+        border-radius: 2rem;
+        height: 100%;
+        padding: .5rem;
+    }
+    .inner-table {
+        border-radius: 2rem;
+    }
+    .dealer {
+        margin: 0 auto;
+    }
+    .bet-section {
+        margin: 0 auto;
+        margin-top: 1rem;
+    }
+    .player-deck, .computer-deck {
+        height: 3rem;
+    }
+    .card {
+        height: 2.3rem;
+        width: 1.5rem;
+    }
+    #dealer-counter {
+        margin: 0 auto;
+    }
+}
