@@ -53,15 +53,15 @@ window.onload = function() {
 // This function allow players to use the Betting system
 function addBet(evt) {
     if (currentBal > currentBet) {
-        if (evt.target.innerHTML === '$1') {
+        if (evt.target.innerHTML === '$1' && currentBet + 1 <= currentBal) {
         currentBet += 1
      }
-        if (evt.target.innerHTML === '$5') {
+        if (evt.target.innerHTML === '$5' && currentBet + 5 <= currentBal) {
         currentBet += 5
         }
-        if (evt.target.innerHTML === '$10') {
+        if (evt.target.innerHTML === '$10' && currentBet + 10 <= currentBal) {
         currentBet += 10
-     }  if (evt.target.innerHTML === '$25') {
+     }  if (evt.target.innerHTML === '$25' && currentBet + 25 <= currentBal) {
         currentBet += 25
      }
         betEl.innerHTML = `BETS: $ ${currentBet}`
@@ -352,7 +352,8 @@ function renderResetGame() {
     currentBal = 200;
     totalBets = 0
     balEl.innerHTML = `BAL: $ ${currentBal}`
-    totalBetsEl.innerHTML = ""
+    totalBetsEl.innerHTML = "$0"
+    betEl.innerHTML = "BETS: $ 0"
     message.innerHTML = ""
     startEl.addEventListener('click', startGame)
     startEl.classList.remove('hide')

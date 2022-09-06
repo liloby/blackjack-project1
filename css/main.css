@@ -32,9 +32,7 @@ h1 {
     font-weight: 900;
     font-size: 5.5vmin;
     color: #000000;
-    border-top: 2px solid rgb(255, 187, 0);
-    border-left: 1px solid rgb(255, 204, 0);
-    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 0px 15px 5px rgba(255, 243, 78, 0.9);
     padding: 1rem;
     margin: .5rem 0 3rem 0;
     border-radius: 2rem;
@@ -363,7 +361,7 @@ width: 100%;
     user-select: none;
 }
 .start-btn {
-    background: yellow;
+    background: rgba(255, 255, 0, 0.803);
     display: flex;
     flex-direction: column;
     padding: 2rem;
