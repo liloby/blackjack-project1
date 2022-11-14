@@ -28,6 +28,9 @@
 1. Additional win conditions for Bigger Win Bonuses
 2. Mini-game when player reaches certain amount of rounds
 3. More sound and special effects for smoother gameplay
+4. Implement blackjack 1.5 bonus
+5. Smooth out UI for placing bets
+6. Add Game Over when out of currency
   
 ##### Technology Used:
     HTML, CSS, Javascript, Figma
