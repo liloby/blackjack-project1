@@ -1,6 +1,11 @@
 # BlackJack Game
 ##### BlackJack is a popular Casino game that we can see in almost every Casino. The game consist of one Dealer who deals and plays the game along with other players. The game's objective is to get cards with the value added up as close as or equal to 21 to win. If player or dealer goes above 21, it is known as busted which result in losing automatically.
 
+#### Recent Updates:
+1. Implement blackjack 1.5 bonus
+2. Smooth out UI for placing bets
+3. Add Game Over when out of currency
+
 ### To Play: Click on this link https://liloby.github.io/blackjack-project1/
 1. Place your bet by clicking on the pokerchips associate with the value you desire.
 2. When done placing your bet, click the PLACE BET TO START button. 
@@ -23,14 +28,10 @@
 ## Mobile Version:
 <img width="387" alt="image" src="https://user-images.githubusercontent.com/72634228/187874253-7e2d7051-7ed1-4506-8013-83eeb6afc30a.png">
 
-
 #### Future Updates:
 1. Additional win conditions for Bigger Win Bonuses
 2. Mini-game when player reaches certain amount of rounds
 3. More sound and special effects for smoother gameplay
-4. Implement blackjack 1.5 bonus
-5. Smooth out UI for placing bets
-6. Add Game Over when out of currency
   
 ##### Technology Used:
     HTML, CSS, Javascript, Figma
