@@ -9,6 +9,7 @@ let canHit = true;
 let currentBal = 0;
 let currentBet = 0;
 let totalBets = 0;
+let playerCardCount = 0;
 
 /*----- cached element references -----*/
 const chipsEl = document.getElementById('money-chips')
@@ -181,6 +182,7 @@ function showDealerCards() {
 function startDealPlayer() {
     for (let i = 0; i < 2; i++) {
         card = deck.pop()
+        playerCardCount += 1
         playerSum += card.value
         playerAceCount += checkAce(card)
         playerAceDeduct()
@@ -210,6 +212,7 @@ function hitMe() {
         return
     }
     card = deck.pop()
+    playerCardCount += 1
     playerSum += card.value
     playerAceCount += checkAce(card)
     playerAceDeduct()
@@ -278,7 +281,12 @@ function wrapUp() {
 function render() {
     dealerCounterEl.innerHTML = dealerSum
     hiddenCardEl.classList.remove('back-red')
-    if (dealerSum > 21 && playerSum > 21) {
+    if (playerCardCount == 2 && playerSum == 21) {
+        currentBal += Math.ceil(totalBets * 2.5)
+        message.innerHTML = "You Won $ " + Math.ceil(totalBets * 1.5)
+        message.style.color = "green"
+        totalBets = 0
+    } else if (dealerSum > 21 && playerSum > 21) {
         dealerCounterEl.style.color = 'red' 
         message.innerHTML = "Its a Tie"
         message.style.color = "darkgray"
@@ -341,6 +349,7 @@ function renderNextRound() {
     computerRound = 0;
     dealerAceCount = 0;
     playerAceCount = 0;
+    playerCardCount = 0;
     deck;
     canHit = true;
     dealerCounterEl.style.color = 'white' 
@@ -375,6 +384,7 @@ function renderResetGame() {
     computerRound = 0;
     dealerAceCount = 0;
     playerAceCount = 0;
+    playerCardCount = 0;
     deck;
     canHit = true;
     dealerCounterEl.style.color = 'white' 
