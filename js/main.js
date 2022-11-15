@@ -185,6 +185,14 @@ function startDealPlayer() {
         playerAceCount += checkAce(card)
         playerAceDeduct()
         showPlayerCards()
+        checkBlackjack()
+    }
+}
+
+function checkBlackjack() {
+    if (playerSum == 21) 
+    {
+        render()
     }
 }
 
@@ -324,6 +332,10 @@ function renderNextRound() {
     message.innerHTML = ""
     startEl.addEventListener('click', startGame)
     startEl.classList.remove('hide')
+    if (currentBal <= 0)
+    {
+        startEl.innerHTML = "GAME OVER RESET TO PLAY"
+    }
     dealerSum = 0;
     playerSum = 0;
     computerRound = 0;
@@ -357,6 +369,7 @@ function renderResetGame() {
     message.innerHTML = ""
     startEl.addEventListener('click', startGame)
     startEl.classList.remove('hide')
+    startEl.innerHTML = "PLACE BET TO START"
     dealerSum = 0;
     playerSum = 0;
     computerRound = 0;
